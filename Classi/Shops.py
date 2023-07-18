@@ -5,12 +5,13 @@ File creato da Federico Piras in data 18.07.2023
 Definizione della classe negozio e dei singoli negozi
 
 """
+from Character import Character
 
 
 class Shop:
 
-    def __init__(self, attribute):
-        self.attribute = attribute
+    def __init__(self, name):
+        self.name = name
 
 
 class Smith(Shop):
@@ -34,14 +35,13 @@ class Smith(Shop):
 
 class Tavern(Shop):
 
-    def __init__(self, attribute2):
-        self.attribute2 = attribute2
+    def __init__(self):
+        self.__price_per_night = 10
 
     def rent_a_room(self, character):
-        if type(character) == "Character":
+        if isinstance(character, Character):
             n_nights = int(input("How many nights do you want to stay?"))
-            price_per_night = 10
-            price = price_per_night * n_nights
+            price = self.price_per_night * n_nights
             if character.has_enough_money(price):
                 n_hours_per_night = 8
                 n_lifepoints_per_hour = 3
@@ -52,7 +52,7 @@ class Tavern(Shop):
             print(f"Invalid input class. Character must be class class Character. Your input is of class {type(character)}")
 
     def drink_a_beer(self, character):
-        if type(character) == "Character":
+        if isinstance(character, Character):
             beer_price = 3
             n_beers = int(input("How many beers do you want to drink?"))
             price = n_beers * beer_price
