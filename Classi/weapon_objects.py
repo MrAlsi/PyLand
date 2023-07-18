@@ -19,3 +19,4 @@ bow = Weapon(name="bow", damage=5, price=5, level=0)
 magic_wand = Weapon(name="magic_wand", damage=12, price=7, level=0)
 shuriken = Weapon(name="shuriken", damage=9, price=8, level=0)
 
+
