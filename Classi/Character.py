@@ -1,9 +1,11 @@
 # creato da Gianluca 
 # Sottoclasse Personaggio con attributi: nome, sesso, esperienza, portafoglio, inventario
 
-import Entity;
+import Entity
+
 
 class Character(Entity):
+
     def __init__(self, lineage, name, level, weapon, life, besic_attack, defence, special_attack, gender, exp, wallet, inventory):
         super().__init__(lineage, name, level, weapon, life, besic_attack, defence, special_attack)
         self.gender = gender
