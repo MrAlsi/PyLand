@@ -16,21 +16,24 @@ class Shop:
 
 class Smith(Shop):
 
-    def __init__(self, attribute1):
-        self.attribute1 = attribute1
+    def __init__(self, name):
+        self.name = name
 
     def buy_new_weapon(self):
         pass
 
-    def upgrade_weapon(self, character, weapon, price):
-        if type(weapon) == "Weapon" and type(character) == "Character":
+    def upgrade_weapon(self, character, price):
+        """
+        Upgrades the weapon.
+        :param character: must be an instance of Character
+        :param price: int. Price of the upgrade
+        :return:
+        """
+        if isinstance(character, Character):
             if character.has_enough_money(price):
-                weapon.upgrade_level()
+                character.weapon.upgrade_level()
         else:
-            if type(weapon) != "Weapon":
-                print(f"Invalid input class. Weapon must be class class Weapon. Your input is of class {type(weapon)}")
-            elif type(character) == "Character":
-                print(f"Invalid input class. Character must be class class Character. Your input is of class {type(character)}")
+            print("Invalid INPUT. Character must be class Character")
 
 
 class Tavern(Shop):
@@ -39,6 +42,11 @@ class Tavern(Shop):
         self.__price_per_night = 10
 
     def rent_a_room(self, character):
+        """
+        Allows
+        :param character:
+        :return:
+        """
         if isinstance(character, Character):
             n_nights = int(input("How many nights do you want to stay?"))
             price = self.price_per_night * n_nights

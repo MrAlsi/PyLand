@@ -10,6 +10,8 @@ class Enemy(Entity):
         super().__init__(lineage, name, level, weapon, life, basic_attack, defence, special_attack)
         self.drop = drop
 
+    # Guardaci in data 19.07
+
     def lose_lifepoints(self, attacker):
         if isinstance(attacker, Character):
             if attacker.is_equipped():

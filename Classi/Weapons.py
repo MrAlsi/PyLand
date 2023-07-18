@@ -26,5 +26,9 @@ class Weapon:
         return self.price
 
     def upgrade_level(self):
-        self.level += 1
+        if self.level < self.max_level:
+            self.level += 1
+            self.damage = int(self.damage * 0.05 + self.damage)
+        else:
+            print("Weapon is already maxed out")
 
