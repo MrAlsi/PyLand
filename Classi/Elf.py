@@ -3,6 +3,7 @@
 
 import Character;
 
+
 class Elf(Character):
     def __init__(self, gender, exp, wallet, inventory):
         super().__init__(gender, exp, wallet, inventory)

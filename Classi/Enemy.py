@@ -6,8 +6,8 @@ from Character import Character
 
 
 class Enemy(Entity):
-    def __init__(self, lineage, name, level, weapon, life, besic_attack, defence, special_attack, drop):
-        super().__init__(lineage, name, level, weapon, life, besic_attack, defence, special_attack)
+    def __init__(self, lineage, name, level, weapon, life, basic_attack, defence, special_attack, drop):
+        super().__init__(lineage, name, level, weapon, life, basic_attack, defence, special_attack)
         self.drop = drop
 
     def lose_lifepoints(self, attacker):

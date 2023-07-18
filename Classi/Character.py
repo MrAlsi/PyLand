@@ -6,8 +6,8 @@ import Entity
 
 class Character(Entity):
 
-    def __init__(self, lineage, name, level, weapon, life, besic_attack, defence, special_attack, gender, exp, wallet, inventory):
-        super().__init__(lineage, name, level, weapon, life, besic_attack, defence, special_attack)
+    def __init__(self, lineage, name, level, weapon, life, basic_attack, defence, special_attack, gender, exp, wallet, inventory):
+        super().__init__(lineage, name, level, weapon, life, basic_attack, defence, special_attack)
         self.gender = gender
         self.exp = exp
         self.wallet = wallet
