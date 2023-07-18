@@ -1,5 +1,6 @@
 import tkinter as tk
 import DB.testDB as db
+from PIL import ImageTk, Image
 
 type_character = ""
 
@@ -42,7 +43,7 @@ def createCharacter():
 
 # SET WINDOWS CONFIG
 window = tk.Tk()
-window.geometry("700x700")
+window.geometry("1000x1000")
 window.title("PYLAND")
 window.resizable(False, False)
 window.configure(background="black")
@@ -51,14 +52,41 @@ name_entry = tk.Entry(window)
 name_entry.pack()
 
 
+image_path_elf = './images/Elf.jpg'  # Sostituisci con il percorso corretto dell'immagine
+image_elf = Image.open(image_path_elf)
+image_elf = image_elf.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
+
+photo_elf = ImageTk.PhotoImage(image_elf)
+ElfButton = tk.Button(image = photo_elf, command=showElf)
+
+
+image_path_Kni = './images/Knight.jpg'  # Sostituisci con il percorso corretto dell'immagine
+image_Kni = Image.open(image_path_Kni)
+image_Kni = image_Kni.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
+
+photo_Kni = ImageTk.PhotoImage(image_Kni)
+KnightButton = tk.Button(image = photo_Kni, command=showKnight)
+
+image_path_Wiz = './images/Wizard.jpg'  # Sostituisci con il percorso corretto dell'immagine
+image_Wiz = Image.open(image_path_Wiz)
+image_Wiz = image_Wiz.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
+
+photo_Wiz = ImageTk.PhotoImage(image_Wiz)
+WizardButton = tk.Button(image = photo_Wiz, command=showWizard)
+
+
+image_path_Nin = './images/Ninja.png'  # Sostituisci con il percorso corretto dell'immagine
+image_Nin = Image.open(image_path_Nin)
+image_Nin = image_Nin.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
+
+photo_Nin = ImageTk.PhotoImage(image_Nin)
+NinjaButton = tk.Button(image = photo_Nin, command=showNinja)
+
 
 
 # CHARACTER CHOISE
 question_label = tk.Label(window, text="Cosa vuoi essere in questo mondo?")
-ElfButton = tk.Button(text="Elfo", command=showElf)
-KnightButton = tk.Button(text="Cavaliere", command=showKnight)
-WizardButton = tk.Button(text="Mago", command=showWizard)
-NinjaButton = tk.Button(text="Ninja", command=showNinja)
+
 
 attack_var = tk.StringVar()
 attack_var.set("-")
