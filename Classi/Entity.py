@@ -19,10 +19,18 @@ class Entity:
         self.maxlife = 200
 
     def print_lifepoints(self):
+        """
+        Prints PG life points
+        :return:
+        """
         print(f"Current life is {self.life}/{self.maxlife}")
 
-    # Controllo quando si aggiungono punti vita, affinche non superi il max vita
     def add_lifepoints(self, life_to_add):
+        """
+
+        :param life_to_add:
+        :return:
+        """
         if self.life == self.maxlife:
             print("Life is already maxed out")
         elif self.life + life_to_add > self.maxlife:
