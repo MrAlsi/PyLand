@@ -6,6 +6,6 @@ collection_name = dbname["Giocatori"]
 
 
 
-collection_name.insert_one(item_3)
+#collection_name.insert_one(item_3)
 
 print("WE")
