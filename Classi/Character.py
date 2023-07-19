@@ -12,11 +12,15 @@ class Character(Entity):
         self.exp = exp
         self.wallet = wallet
         self.inventory = inventory
+        self.max_inventory_len = 3
 
-# funzione per controllare se il personaggio ha abbastanza soldi per comprare gli oggetti 
-def has_enough_money(self, price):
-    if self.wallet - price >= 0:
-        self.wallet -= price
-    else:
-        print(f"Your credit is not sufficient. The action costs {price}. your current balance is: {self.wallet}")
-    return self.wallet - price >= 0
+    # funzione per controllare se il personaggio ha abbastanza soldi per comprare gli oggetti
+    def has_enough_money(self, price):
+        if self.wallet - price >= 0:
+            self.wallet -= price
+        else:
+            print(f"Your credit is not sufficient. The action costs {price}. your current balance is: {self.wallet}")
+        return self.wallet - price >= 0
+
+    def has_enough_room_in_inventory(self):
+        return len(self.inventory) < self.max_inventory_len
