@@ -1,7 +1,7 @@
 
 from Classi.Wizard import Wizard as newWizard
 from Classi.Elf import Elf as newElf
-from Classi.Knight import Knigth as newKnigth
+from Classi.Knight import Knight as newKnigth
 from Classi.Ninja import Ninja as newNinja
 import DB.CRUD as db
 

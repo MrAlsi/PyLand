@@ -25,6 +25,7 @@ class Smith(Shop):
         :return:
         """
         character_type = type(character).__name__
+
         weapon_names = []
         for element in weapons_dict[character_type]:
             weapon_names.append(element.name)
