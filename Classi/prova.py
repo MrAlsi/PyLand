@@ -44,7 +44,7 @@ import random
 
 class Personaggio:
 
-    def __init__(self, attacco, vita, difesa):
+    def __init__(self, attacco, vita, difesa, arma):
         self.attacco = attacco
         self.vita = vita
         self.difesa = difesa
@@ -72,3 +72,4 @@ pg2 = Personaggio(attacco=7, vita=80, difesa=3)
 
 pg1.combat(pg2)
 
+from weapon_objects import sword
