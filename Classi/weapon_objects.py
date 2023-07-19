@@ -14,6 +14,24 @@ Shuriken: shuriken ------------> Ninja.
 
 from Classi.Weapons import Weapon
 
+
+#armi dei mostri
+sharp_fangs = Weapon(name="sharp fangs", damage=10, price=10, level=1)
+rusty_sword = Weapon(name="rusty sword", damage=11, price=10, level=0)
+broken_axe = Weapon(name="broken axe", damage=12, price=12, level=1)
+sharp_claws = Weapon(name="sharp claws", damage=13, price=13, level=2)
+big_hammer = Weapon(name="big hammer", damage=14, price=14, level=2)
+fangs = Weapon(name="fangs", damage=15, price=15, level=3)
+claws = Weapon(name="claws", damage=16, price=16, level=3)
+magic_wand = Weapon(name="magic wand", damage=12, price=12, level=1)
+dust_bag = Weapon(name="dust bag", damage=10, price=10, level=1)
+flower_crown = Weapon(name="flower crown", damage=8, price=8, level=0)
+feather_fan = Weapon(name="feather fan", damage=9, price=9, level=0)
+crystal_ball = Weapon(name="crystal ball", damage=14, price=14, level=2)
+shell_necklace = Weapon(name="shell necklace", damage=7, price=7, level=0)
+horn = Weapon(name="horn", damage=17, price=17, level=3)
+wings = Weapon(name="wings", damage=18, price=18, level=4)
+
 # Definire armi per Knight
 wooden_sword = Weapon(name="wooden_sword", damage=7, price=10, level=0)
 iron_sword = Weapon(name="iron sword", damage=11, price=40, level=0)
