@@ -115,9 +115,9 @@ class Smith(Shop):
 
         #  Se ho solo un'arma...
         if len(inventory) == 1:
+            index_of_weapon = 0
 
-            idx_of_weapon = 0
-
+        # Se ho più di una arma...
         elif len(inventory) > 1:
             # Ciclo sugli elementi dell'inventario e mi salvo i nomi delle armi
             weapon_names = []
