@@ -24,7 +24,7 @@ class Enemy(Entity):
         else:
             print("GAME OVER")
 
-slime = Enemy("Oscuro","Slime", 1, None, 20, 10, 10, None, 5)
+slime = Enemy("Enemy","Slime", 1, None, 20, 10, 10, None, 5)
 rat = Enemy("Enemy","Rat", 1, "Sharp fangs", 15, 10, 10, "Poisonous bite", 5)
 goblin = Enemy("Enemy","Goblin", 2, "Rusty sword", 25, 15, 15, "Low blow", 10)
 skeleton = Enemy("Enemy","Skeleton", 3, "Broken axe", 35, 20, 20, "Flying bones", 15)
