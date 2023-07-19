@@ -1,12 +1,8 @@
 import tkinter as tk
 import DB.CRUD as db
 from PIL import ImageTk, Image
-import Classi.Wizard as newWizard
-
+from Classi.Wizard import Wizard as newWizard
 type_character = ""
-
-personaggio = newWizard()
-
 
 
 # FUNCTION
@@ -42,7 +38,7 @@ def showNinja():
 def createCharacter():
     name = name_entry.get()
     global type_character
-    db.addCharacter(name, type_character)
+    db.addCharacter(name, type_character, newWizard("B", name, 0, None, 100, 10, 5, 15, "Maschio", 0, 10, []))
 
 
 # SET WINDOWS CONFIG
@@ -61,21 +57,21 @@ image_elf = Image.open(image_path_elf)
 image_elf = image_elf.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
 photo_elf = ImageTk.PhotoImage(image_elf)
 ElfButton = tk.Button(image = photo_elf, command=showElf)
-ElfButton.grid(row=0, column=0)
+ElfButton.pack()
 
 image_path_Kni = './images/Knight.jpg'  # Sostituisci con il percorso corretto dell'immagine
 image_Kni = Image.open(image_path_Kni)
 image_Kni = image_Kni.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
 photo_Kni = ImageTk.PhotoImage(image_Kni)
 KnightButton = tk.Button(image = photo_Kni, command=showKnight)
-KnightButton.grid(row=0, column=1)
+KnightButton.pack()
 
 image_path_Wiz = './images/Wizard.jpg'  # Sostituisci con il percorso corretto dell'immagine
 image_Wiz = Image.open(image_path_Wiz)
 image_Wiz = image_Wiz.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
 photo_Wiz = ImageTk.PhotoImage(image_Wiz)
 WizardButton = tk.Button(image = photo_Wiz, command=showWizard)
-WizardButton.grid(row=0, column=3)
+WizardButton.pack()
 
 
 image_path_Nin = './images/Ninja.png'  # Sostituisci con il percorso corretto dell'immagine
@@ -83,7 +79,7 @@ image_Nin = Image.open(image_path_Nin)
 image_Nin = image_Nin.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
 photo_Nin = ImageTk.PhotoImage(image_Nin)
 NinjaButton = tk.Button(image = photo_Nin, command=showNinja)
-ElfButton.grid(row=0, column=3)
+NinjaButton.pack()
 
 
 

@@ -4,21 +4,21 @@ from Classi.Wizard import Wizard as newWizard
 import DB.CRUD as db
 
 def loadCharacter(data):
-    ent = newCharacter("Buono", data["nome"], 1, None, 5, 10, 5, 15, data["gender"], data["exp"], data["wallet"], data["inventory"] )
+    print(data["type"])
     if data["type"] == "Wizard":
         #Create a wizard object
-        print(newWizard(ent, data["exp"], data["wallet"], data["inventory"], ))
+        return newWizard(data["lineage"], data["name"], data["level"], data["weapon"], data["life"], data["basic_attack"],
+                data["defence"], data["special_attack"], data["gender"], data["exp"], data["wallet"], data["inventory"])
         
     elif data["type"] == "Elf":
         pass
 
 
-w = newWizard("B", "A", 1, "dcd", 10, 10, 5, 15, "M", 4, 10, [])
-print(w)
 
-dataPlayer = db.getCharacter("Alsi")
+dataPlayer = db.getCharacter("Nitro")
+#print(dataPlayer)
 character = loadCharacter(dataPlayer)
-
+print(character.name)
 
 
 
