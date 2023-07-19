@@ -53,7 +53,7 @@ def addCharacter(nome, type, obj):
 
 def getCharacter(nome):
    '''
-   get character from BD
+   get character from DB select by name
    '''
    giocatori = dbname["Giocatori"]
    return giocatori.find_one({"name": nome})
