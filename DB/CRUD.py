@@ -25,7 +25,10 @@ collection_name = dbname["Giocatori"]
 
 #collection_name.insert_one(item_3)
 
-def addCharacter(nome, type):
+def addCharacter(nome, type, obj):
+  """
+   Method for Add character in DB
+  """
   collection_name = dbname["Giocatori"]
   character = {
       "nome": nome,
@@ -37,7 +40,21 @@ def addCharacter(nome, type):
 
   }
 
-  collection_name.insert_one(character)
+  collection_name.insert_one(obj)
+
+
+
+def getCharacter(nome):
+   '''
+   get character from BD
+   '''
+   giocatori = dbname["Giocatori"]
+   return giocatori.find_one({"nome": nome})
+   
+
+def updateCharacter(player):
+   pass
+
 
 
 print("WE")

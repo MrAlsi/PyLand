@@ -1,7 +1,7 @@
 # creato da Gianluca 
 # Sottoclasse Personaggio con attributi: nome, sesso, esperienza, portafoglio, inventario
 
-import Entity
+from Classi.Entity import Entity
 
 
 class Character(Entity):
