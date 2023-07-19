@@ -35,3 +35,6 @@ shuriken = Weapon(name="shuriken", damage=9, price=8, level=0)
 # Fai un dizionario di tipo: {"Tipo di PG (quindi Knight, Elf....)": [lista di armi per quel pg]
 # Esempio:  {"Knight": [sword, knife, alabarda],
 #             "Ninja": [armi del ninja]  }
+
+weapons_dict = {}
+
