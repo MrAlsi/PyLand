@@ -25,8 +25,12 @@ class Smith(Shop):
         :return:
         """
         character_type = type(character).__name__
-        ## Gabriel fa grafica
-        return weapons_dict[character_type]
+        weapon_names = []
+        for element in weapons_dict[character_type]:
+            weapon_names.append(element.name)
+
+        print(weapon_names)
+        return weapon_names
 
     def buy_new_weapon(self, character, desired_weapon):
         """
@@ -35,22 +39,34 @@ class Smith(Shop):
         :param desired_weapon:
         :return:
         """
-        price = desired_weapon.price
+
+        character_type = type(character).__name__
 
         # Controllo per non comprare armi doppie
         weapons_names = []
         for element in character.inventory:
             weapons_names.append(element.name)
 
-        # Se ha abbastanza soldi
-        if character.has_enough_money(price) and (desired_weapon.name not in weapons_names):
-            character.inventory.append(desired_weapon)
-            # Se ha spazio nell'inventario:
-            if character.has_enough_room_in_inventory():
-                character.inventory.append(desired_weapon)
-            else:
-                print("Inventory is full or you already own the weapon")
-                print(f"Your inventory: {weapons_names}")
+        if desired_weapon in weapons_names:
+            print("Hai già questa arma")
+
+        else:
+            # Mi serve per l'indice
+            weapon_names = []
+            for element in weapons_dict[character_type]:
+                weapon_names.append(element.name)
+
+            # Prendo l'indice dell'arma che voglio comprare
+            weapon_index = weapon_names.index(desired_weapon)
+
+            # Prendo l'arma che voglio comprare
+            weapon = weapons_dict[character_type][weapon_index]
+            price = weapon.price
+
+            # Se ha abbastanza soldi
+            if character.has_enough_money(price) and character.has_enough_room_in_inventory():
+                character.inventory.append(weapon)
+
 
     def sell_weapon(self, character):
         # Prendo inventario
@@ -84,20 +100,57 @@ class Smith(Shop):
         # Aumento il wallet
         character.wallet += price
 
-
-
-    def upgrade_weapon(self, character, price):
+    def upgrade_weapon(self, character):
         """
         Upgrades the weapon.
         :param character: must be an instance of Character
         :param price: int. Price of the upgrade
         :return:
         """
-        if isinstance(character, Character):
-            if character.has_enough_money(price):
-                character.weapon.upgrade_level()
+
+        # Prendo inventario
+        inventory = character.inventory
+
+        #  Se ho solo un'arma...
+        if len(inventory) == 1:
+
+            idx_of_weapon = 0
+
+        elif len(inventory) > 1:
+            # Ciclo sugli elementi dell'inventario e mi salvo i nomi delle armi
+            weapon_names = []
+            for element in inventory:
+                weapon_names.append(element.name)
+
+            # Mostro le armi disponibili e chiedo all'utente quale vuole upgradare
+            print("Le armi disponibili sono: ")
+            print(weapon_names)
+            weapon_to_upgrade = input("Che arma vuoi upgradare?")
+
+            # Finchè non mi dai un nome valido...
+            while weapon_to_upgrade not in weapon_names:
+                weapon_to_upgrade = input("Nome non valido! Che arma vuoi upgradare?")
+                print(weapon_names)
+
+            index_of_weapon = weapon_names.index(weapon_to_upgrade)
+
+        # Adesso che ho l'indice dell'arma che voglio migliorare, calcolo il prezzo dell'upgrade
+        weapon = inventory[index_of_weapon]
+        base_price = weapon.price
+        level = weapon.level
+        const = 0.3
+        upgrade_price = base_price + base_price * (level + 1) * const
+
+        # Se effettivamente è un pg che sta interagendo con il fabbro...
+        print(character)
+        print(type(character))
+
+        if isinstance(character,Character):
+            if character.has_enough_money(upgrade_price):
+                character.inventory[index_of_weapon].upgrade_level()
         else:
             print("Invalid INPUT. Character must be class Character")
+
 
 
 class Tavern(Shop):
