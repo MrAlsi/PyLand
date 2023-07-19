@@ -16,11 +16,13 @@ class Character(Entity):
 
     # funzione per controllare se il personaggio ha abbastanza soldi per comprare gli oggetti
     def has_enough_money(self, price):
+        flag = False
         if self.wallet - price >= 0:
             self.wallet -= price
+            flag = True
         else:
             print(f"Your credit is not sufficient. The action costs {price}. your current balance is: {self.wallet}")
-        return self.wallet - price >= 0
+        return flag
 
     def has_enough_room_in_inventory(self):
         return len(self.inventory) < self.max_inventory_len

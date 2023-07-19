@@ -12,7 +12,7 @@ Shuriken: shuriken ------------> Ninja.
 
 """
 
-from Weapons import Weapon
+from Classi.Weapons import Weapon
 
 # Definire armi per Knight
 wooden_sword = Weapon(name="wooden_sword", damage=7, price=10, level=0)

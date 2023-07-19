@@ -2,8 +2,8 @@ import tkinter as tk
 import DB.CRUD as db
 from PIL import ImageTk, Image
 from Classi.Wizard import Wizard as newWizard
-type_character = ""
 
+type_character = ""
 
 # FUNCTION
 def showElf():
@@ -50,7 +50,6 @@ window.configure(background="black")
 
 name_entry = tk.Entry(window)
 name_entry.pack()
-
 
 image_path_elf = './images/Elf.jpg'  # Sostituisci con il percorso corretto dell'immagine
 image_elf = Image.open(image_path_elf)
