@@ -15,7 +15,7 @@ Shuriken: shuriken ------------> Ninja.
 from Weapons import Weapon
 
 # Definire armi per Knight
-wooden_sword = Weapon(name="sward", damage=7, price=10, level=0)
+wooden_sword = Weapon(name="wooden_sword", damage=7, price=10, level=0)
 iron_sword = Weapon(name="iron sword", damage=11, price=40, level=0)
 steel_sword = Weapon(name="steel sword", damage=13, price=50, level=1)
 silver_sword = Weapon(name="silver sword", damage=15, price=60, level=2)
@@ -29,8 +29,8 @@ dagger = Weapon(name="dagger", damage=8, price=20, level=1)
 
 # Definire armi per Elf
 staff = Weapon(name="staff", damage=10, price=30, level=0)
-elven_dagger = Weapon(name="dagger", damage=8, price=20, level=1)
-standard_bow = Weapon(name="bow", damage=10, price=30, level=1)
+elven_dagger = Weapon(name="elven_dagger", damage=8, price=20, level=1)
+standard_bow = Weapon(name="standard_bow", damage=10, price=30, level=1)
 shortbow = Weapon(name="shortbow", damage=11, price=40, level=0)
 longbow = Weapon(name="longbow", damage=12, price=50, level=1)
 recurve_bow = Weapon(name="recurve bow", damage=20, price=150, level=1)
