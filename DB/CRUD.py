@@ -25,19 +25,43 @@ collection_name = dbname["Giocatori"]
 
 #collection_name.insert_one(item_3)
 
-def addCharacter(nome, type):
+def addCharacter(nome, type, obj):
+  """
+   Method for Add character in DB
+  """
   collection_name = dbname["Giocatori"]
   character = {
-      "nome": nome,
+      "lineage": obj.lineage,
+      "name": obj.name,
+      "level": obj.level,
       "type": type,
-      "gender": "M",
-      "exp": 0,
-      "wallet": 5,
-      "inventory": None
+      "weapon": obj.weapon,
+      "life": obj.life,
+      "basic_attack": obj.basic_attack,
+      "defence": obj.defence,
+      "special_attack": obj.special_attack,
+      "gender": obj.gender, 
+      "exp": obj.exp,
+      "wallet": obj.wallet,
+      "inventory": obj.inventory
 
   }
 
   collection_name.insert_one(character)
+
+
+
+def getCharacter(nome):
+   '''
+   get character from BD
+   '''
+   giocatori = dbname["Giocatori"]
+   return giocatori.find_one({"name": nome})
+   
+
+def updateCharacter(player):
+   pass
+
 
 
 print("WE")

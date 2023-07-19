@@ -1,7 +1,7 @@
 # creato da Gianluca 
 # classe Entità con gli attributi. casata, livello, vita, attacco base, difesa, attacco speciale
 
-from Character import Character
+#from Classi.Character import Character
 import random
 
 

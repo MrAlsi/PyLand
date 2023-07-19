@@ -1,9 +1,8 @@
 import tkinter as tk
-import DB.testDB as db
+import DB.CRUD as db
 from PIL import ImageTk, Image
-
+from Classi.Wizard import Wizard as newWizard
 type_character = ""
-
 
 
 # FUNCTION
@@ -13,6 +12,7 @@ def showElf():
     special_attack_var.set("9")
     global type_character
     type_character = "Elf"
+
     
 def showKnight():
     attack_var.set("10")
@@ -38,7 +38,7 @@ def showNinja():
 def createCharacter():
     name = name_entry.get()
     global type_character
-    db.addCharacter(name, type_character)
+    db.addCharacter(name, type_character, newWizard("B", name, 0, None, 100, 10, 5, 15, "Maschio", 0, 10, []))
 
 
 # SET WINDOWS CONFIG
@@ -55,32 +55,31 @@ name_entry.pack()
 image_path_elf = './images/Elf.jpg'  # Sostituisci con il percorso corretto dell'immagine
 image_elf = Image.open(image_path_elf)
 image_elf = image_elf.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
-
 photo_elf = ImageTk.PhotoImage(image_elf)
 ElfButton = tk.Button(image = photo_elf, command=showElf)
-
+ElfButton.pack()
 
 image_path_Kni = './images/Knight.jpg'  # Sostituisci con il percorso corretto dell'immagine
 image_Kni = Image.open(image_path_Kni)
 image_Kni = image_Kni.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
-
 photo_Kni = ImageTk.PhotoImage(image_Kni)
 KnightButton = tk.Button(image = photo_Kni, command=showKnight)
+KnightButton.pack()
 
 image_path_Wiz = './images/Wizard.jpg'  # Sostituisci con il percorso corretto dell'immagine
 image_Wiz = Image.open(image_path_Wiz)
 image_Wiz = image_Wiz.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
-
 photo_Wiz = ImageTk.PhotoImage(image_Wiz)
 WizardButton = tk.Button(image = photo_Wiz, command=showWizard)
+WizardButton.pack()
 
 
 image_path_Nin = './images/Ninja.png'  # Sostituisci con il percorso corretto dell'immagine
 image_Nin = Image.open(image_path_Nin)
 image_Nin = image_Nin.resize((150, 150))  # Regola le dimensioni dell'immagine se necessario
-
 photo_Nin = ImageTk.PhotoImage(image_Nin)
 NinjaButton = tk.Button(image = photo_Nin, command=showNinja)
+NinjaButton.pack()
 
 
 
@@ -102,10 +101,7 @@ invio_button = tk.Button(window, text="Invia", command=createCharacter)
 
 
 question_label.pack()
-ElfButton.pack()
-KnightButton.pack()
-WizardButton.pack()
-NinjaButton.pack()
+
 attack_label.pack()
 defense_label.pack()
 special_attack_label.pack()
