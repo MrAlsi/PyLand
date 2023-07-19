@@ -1,7 +1,6 @@
 # creato da Gianluca 
 # classe Entità con gli attributi. casata, livello, vita, attacco base, difesa, attacco speciale
 
-#from Classi.Character import Character
 import random
 
 
@@ -54,23 +53,7 @@ class Entity:
         Returns total attack points of the PG
         :return:
         """
-        return self.basic_damage + self.weapon.damage if self.is_equipped() else self.basic_damage
+        return self.basic_attack + self.weapon.damage if self.is_equipped() else self.basic_attack
 
-    def fight(self, opponent):
-        """
-        Implements a fight between two PG.
-        :param opponent: The opponent to fight. Must be an instance of class Character
-        :return:
-        """
-        if isinstance(opponent, Character):
-            dodge_chance = random.choice(range(1, 11))
-            if dodge_chance == 1:
-                print("L'avversario ha schivato, che sfiga!")
-            else:
-                damage = int(self.attack()/opponent.defence * 5)
-                opponent.life -= damage
-                print(f"L'avversario ha subito il tuo danno e ha perso {damage} punti vita")
-                opponent.print_lifepoints()
-        else:
-            print("Invalid INPUT. Opponent must be class Character")
+
 

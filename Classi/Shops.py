@@ -18,7 +18,7 @@ class Shop:
 class Smith(Shop):
 
     def __init__(self, name):
-        self.name = name
+        self.name = 'Mario'
 
     def show_available_weapons(self, character):
         """
@@ -28,13 +28,17 @@ class Smith(Shop):
         """
         character_type = type(character).__name__
         weapon_names = []
+        weapon_prices = []
         for element in weapons_dict[character_type]:
             weapon_names.append(element.name)
+            weapon_prices.append(element.price)
 
-        print(weapon_names)
+        print("Puoi comprare le seguenti armi:")
+        for nome_arma, prezzo_arma in list(zip(weapon_names, weapon_prices)):
+            print(f"Nome: {nome_arma}, prezzo: {prezzo_arma}")
         return weapon_names
 
-    def buy_new_weapon(self, character, desired_weapon):
+    def buy_new_weapon(self, character):
         """
         Function that allows to buy the new weapon
         :param character:
@@ -42,65 +46,96 @@ class Smith(Shop):
         :return:
         """
 
-        character_type = type(character).__name__
+        if character.has_enough_room_in_inventory():
 
-        # Controllo per non comprare armi doppie
-        weapons_names = []
-        for element in character.inventory:
-            weapons_names.append(element.name)
+            # Facciamo vedere le armi disponibili
+            list_of_available_weapons = self.show_available_weapons(character)
 
-        if desired_weapon in weapons_names:
-            print("Hai già questa arma")
+            # Chiedo l'arma
+            desired_weapon = input("Che arma vuoi? ")
+            while desired_weapon not in list_of_available_weapons:
+                desired_weapon = input("Hai inserito un nome arma non valido. Che arma vuoi? ")
 
-        else:
-            # Mi serve per l'indice
-            weapon_names = []
-            for element in weapons_dict[character_type]:
-                weapon_names.append(element.name)
+            character_type = type(character).__name__
 
-            # Prendo l'indice dell'arma che voglio comprare
-            weapon_index = weapon_names.index(desired_weapon)
+            # Controllo per non comprare armi doppie
+            weapons_names = []
+            for element in character.inventory:
+                weapons_names.append(element.name)
 
-            # Prendo l'arma che voglio comprare
-            weapon = weapons_dict[character_type][weapon_index]
-            price = weapon.price
+            if desired_weapon in weapons_names:
+                print("Hai già questa arma")
 
-            # Se ha abbastanza soldi
-            if character.has_enough_money(price) and character.has_enough_room_in_inventory():
-                character.inventory.append(weapon)
+            else:
+                # Mi serve per l'indice
+                weapon_names = []
+                for element in weapons_dict[character_type]:
+                    weapon_names.append(element.name)
 
+                # Prendo l'indice dell'arma che voglio comprare
+                weapon_index = weapon_names.index(desired_weapon)
+
+                # Prendo l'arma che voglio comprare
+                weapon = weapons_dict[character_type][weapon_index]
+                price = weapon.price
+
+                # Se ha abbastanza soldi
+                if character.has_enough_money(price) and character.has_enough_room_in_inventory():
+                    character.inventory.append(weapon)
+                    print("Acquisto avvenuto con successo")
+                    character.print_wallet_balance()
 
     def sell_weapon(self, character):
+        """
+        Funzione per vendere un'arma
+        :param character:
+        :return:
+        """
         # Prendo inventario
         inventory = character.inventory
 
-        # Ciclo sugli elementi dell'inventario e mi salvo i nomi delle armi
-        weapon_names = []
-        for element in inventory:
-            weapon_names.append(element.name)
+        # Se non hai armi...
+        if len(inventory) == 0:
+            print("Non hai armi da vendere. Torna un'altra volta")
 
-         # Chiedo all'utente quale arma vuole eliminare
-        print("You have the following weapons in your inventory: which one would you like to sell?")
-        print(f"Your weapons: {weapon_names}")
-        weapon_to_sell = input("Write the weapon name: ")
-        while weapon_to_sell not in weapon_names:
+        else:
+
+            # Ciclo sugli elementi dell'inventario e mi salvo i nomi delle armi
+            weapon_names = []
+            for element in inventory:
+                weapon_names.append(element.name)
+
+            # Chiedo all'utente quale arma vuole eliminare
+            print("You have the following weapons in your inventory: which one would you like to sell?")
+            print(f"Your weapons: {weapon_names}")
             weapon_to_sell = input("Write the weapon name: ")
+            while weapon_to_sell not in weapon_names:
+                weapon_to_sell = input("Write the weapon name: ")
 
-        # Prendo l'indice dell'arma che mi ha detto l'utente
-        idx_of_weapon_to_sell = weapon_names.index(weapon_to_sell)
+            # Prendo l'indice dell'arma che mi ha detto l'utente
+            idx_of_weapon_to_sell = weapon_names.index(weapon_to_sell)
 
-        # Seleziono l'arma a quell'indice
-        weapon_to_sell = inventory[idx_of_weapon_to_sell]
-        price = weapon_to_sell.price
+            # Seleziono l'arma a quell'indice
+            weapon_to_sell = inventory[idx_of_weapon_to_sell]
+            price = weapon_to_sell.price
 
-        # Il fabbro mi da il 30% del valore dell'arma quando gliela vendo
-        price = 0.3 * price
+            # Il fabbro mi da il 30% del valore dell'arma quando gliela vendo
+            price = 0.3 * price
 
-        # Rimuovo l'arma dall'inventario
-        inventory.pop(idx_of_weapon_to_sell)
+            # Rimuovo l'arma dall'inventario
+            flag = int(input(f"Guadagnerai {price} dalla vendita. 1 per continuare, 0 per interrompere"))
+            while flag not in [0, 1]:
+                flag = int(input(f"Input errato. 1 per continuare, 0 per interrompere"))
 
-        # Aumento il wallet
-        character.wallet += price
+            if flag:
+                inventory.pop(idx_of_weapon_to_sell)
+                print("Vendita avvenuta con successo")
+                print(f"Balance precedente: {character.wallet}")
+                # Aumento il wallet
+                character.wallet += price
+                print(f"Balance attuale: {character.wallet}")
+            else:
+                print("Vendita fallita")
 
     def upgrade_weapon(self, character):
         """
@@ -143,15 +178,24 @@ class Smith(Shop):
         const = 0.3
         upgrade_price = base_price + base_price * (level + 1) * const
 
-        # Se effettivamente è un pg che sta interagendo con il fabbro...
-        print(character)
-        print(type(character))
+        # Printiamo qualcosa:
+        print(f"Arma scelta: {weapon.name}. Prezzo: {upgrade_price}.")
+        flag = int(input("Digita 1 per continuare, 0 per interrompere"))
+        while flag not in [0, 1]:
+            flag = int(input("Carattere non valido. Digita 1 per continuare, 0 per interrompere"))
 
-        if isinstance(character,Character):
-            if character.has_enough_money(upgrade_price):
-                character.inventory[index_of_weapon].upgrade_level()
+        previous_level = weapon.level
+        if flag:
+            # Se effettivamente è un pg che sta interagendo con il fabbro...
+            if isinstance(character, Character):
+                if character.has_enough_money(upgrade_price):
+                    character.inventory[index_of_weapon].upgrade_level()
+                    current_level = character.inventory[index_of_weapon].level
+                    print(f"Upgrade avvenuto con successo da livello {previous_level} ---> {current_level}")
+            else:
+                print("Invalid INPUT. Character must be class Character")
         else:
-            print("Invalid INPUT. Character must be class Character")
+            print("Nessun upgrade effettuato")
 
 
 

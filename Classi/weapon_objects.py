@@ -78,4 +78,3 @@ weapons_dict = {"Knight": [wooden_sword, iron_sword, steel_sword, silver_sword, 
                 "Ninja": [katana, kunai, nunchaku, sai, four_point_shuriken, six_point_shuriken, 
                           eight_point_shuriken,circular_shuriken, spiked_shuriken]
                 }
-
