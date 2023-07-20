@@ -109,8 +109,7 @@ while(menu):
             player = db.getCharacter(name)
             if player != None:
                 print("player",player)
-                game.main_loop(cl
-                .getCharacter(name))
+                game.main_loop(cl.getCharacter(name))
             else:
                 print("Personaggio non trovato")
 

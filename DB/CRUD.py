@@ -56,8 +56,31 @@ def getCharacter(nome):
    return giocatori.find_one({"name": nome})
    
 
-def updateCharacter(player):
-   pass
+def updateCharacter(obj):
+   print("obj", obj.inventory)
+
+
+   inventario_dict = []
+   for i in obj.inventory:
+      inventario_dict.append(i.to_dict())
+
+   collection_name = dbname["Giocatori"]
+   character = {
+      '$set' : {
+      "level": obj.level,
+      "weapon": obj.weapon,
+      "life": obj.life,
+      "basic_attack": obj.basic_attack,
+      "defence": obj.defence,
+      "special_attack": obj.special_attack,
+      "exp": obj.exp,
+      "wallet": obj.wallet,
+      "inventory": inventario_dict
+      }
+   }
+
+   collection_name.update_one({"name": obj.name}, character)
+
 
 
 def delete_character(player):
