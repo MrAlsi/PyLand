@@ -2,6 +2,7 @@ import game
 import tkinter as tk
 from Classi.Shops import Tavern
 from Classi.Shops import Smith
+from DB.CRUD import delete_character
 
 
 def fattiNaPera():
@@ -28,12 +29,35 @@ def populate_shop():
 def buy_weapon(event):
     selected_item = available_weapons_listBox.get(available_weapons_listBox.curselection())
     fabbro.buy_new_weapon(player, selected_item)
-    populate_inventary()
+    create_table()
     print("mie armi", player.inventory)
 
+
+def create_table():
+    print(player.inventory)
+    for i, label_text in enumerate(player.inventory):
+        label = tk.Label(table_frame, text=label_text.name)
+        label.grid(row=i, column=0, padx=5, pady=5)
+
+        button1 = tk.Button(table_frame, text="UPGRADE", command=lambda: upgrade_weapon(label_text))
+        button1.grid(row=i, column=1, padx=5, pady=5)
+
+        button2 = tk.Button(table_frame, text="VENDI", command=lambda: sell_weapon(label_text))
+        button2.grid(row=i, column=2, padx=5, pady=5)
+
+
+def sell_weapon(weapon):
+    #fabbro.sell_weapon
+    pass
+
+def upgrade_weapon(weapon):
+    print("arma", weapon)
+    fabbro.upgrade_weapon(player)
     
-nome = "Mammastomale"
+nome = "Strage"
 player = game.getCharacter(nome)
+
+
 
 # SET WINDOWS CONFIG
 window = tk.Tk()
@@ -91,7 +115,15 @@ available_weapons_listBox.bind('<<ListboxSelect>>', buy_weapon)
 available_weapons_listBox.pack()
 
 
+#table_frame = tk.Frame(window)
+#table_frame.pack()
+#create_table()
 
+
+upgrande_weapons_button = tk.Button(window, text="UPGRADE", )
+
+
+delete_character(player)
 #Run window
 if __name__ == "__main__":
     window.mainloop()
