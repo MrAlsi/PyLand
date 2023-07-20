@@ -15,6 +15,9 @@ Shuriken: shuriken ------------> Ninja.
 from Classi.Weapons import Weapon
 
 
+# canna da pesca disponibile per tutti i personaggi
+fishing_pole = Weapon(name="fishing_pole", damage=1, price=20, level=0)
+
 #armi dei mostri
 sharp_fangs = Weapon(name="sharp fangs", damage=10, price=10, level=1)
 rusty_sword = Weapon(name="rusty sword", damage=11, price=10, level=0)
@@ -89,10 +92,11 @@ spiked_shuriken = Weapon(name="spiked shuriken", damage=18, price=150, level=3)
 #             "Ninja": [armi del ninja]  }
 
 weapons_dict = {"Knight": [wooden_sword, iron_sword, steel_sword, silver_sword, gold_sword, diamond_sword, lance, 
-                           mace, axe, halberd, dagger],
-                "Elf": [staff, elven_dagger, standard_bow, shortbow, longbow, recurve_bow, composite_bow, crossbow, rapier],
-                "Wizard": [ wood_wand, iron_wand, silver_wand, gold_wand, diamond_wand, wood_staff,
-                            iron_staff, silver_staff, gold_staff, diamond_staff, orb, crystal, scepter],
+                           mace, axe, halberd, dagger, fishing_pole],
+                "Elf": [staff, elven_dagger, standard_bow, shortbow, longbow, recurve_bow, composite_bow,
+                         crossbow, rapier, fishing_pole],
+                "Wizard": [wood_wand, iron_wand, silver_wand, gold_wand, diamond_wand, wood_staff,
+                            iron_staff, silver_staff, gold_staff, diamond_staff, orb, crystal, scepter, fishing_pole],
                 "Ninja": [katana, kunai, nunchaku, sai, four_point_shuriken, six_point_shuriken, 
-                          eight_point_shuriken,circular_shuriken, spiked_shuriken]
+                          eight_point_shuriken,circular_shuriken, spiked_shuriken, fishing_pole]
                 }
