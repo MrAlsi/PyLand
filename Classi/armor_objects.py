@@ -42,3 +42,21 @@ amulet = Armor(name = "amulet", armor_defense = 6, price = 10)
 
 
 # Definire armatura per Ninja
+mask = Armor(name = "mask", armor_defense = 1, price = 5)
+ninja_suit = Armor(name = "ninja suit", armor_defense = 3, price = 15)
+gloves = Armor(name = "gloves", armor_defense = 5, price = 5)
+boots = Armor(name = "boots", armor_defense = 6, price = 5)
+belt = Armor(name = "belt", armor_defense = 7, price = 5)
+bandana = Armor(name = "bandana", armor_defense = 8, price = 100)
+chainmail = Armor(name = "chainmail", armor_defense = 4, price = 20)
+vest = Armor(name = "vest", armor_defense = 2, price = 10)
+bracer = Armor(name = "bracer", armor_defense = 1, price = 5)
+necklace = Armor(name = "necklace", armor_defense = 1, price = 5)
+
+
+armor_dict = {"Knight": [leather_chestplate, iron_chestplate, steel_chestplate, silver_chestplate, gold_chestplate,
+                          diamond_chestplate, helmet, shield, chainmail, plate_armor],
+                "Elf": [hood, cloak, leather_armor, elven_armor, silk_robe, enchanted_robe],
+                "Wizard": [hat, cape, robe, magic_armor, ring, amulet],
+                "Ninja": [mask, ninja_suit, gloves, boots, belt, bandana, chainmail, vest, bracer, necklace]
+                }
