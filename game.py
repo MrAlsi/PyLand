@@ -11,6 +11,7 @@ def loadCharacter(data):
     In base al tipo di personaggio carica un oggetto diverso
     '''
     if data["type"] == "Wizard":
+        print("Data", data)
         return newWizard(data["lineage"], data["name"], data["level"], data["weapon"], data["life"], data["basic_attack"],
                 data["defence"], data["special_attack"], data["gender"], data["exp"], data["wallet"], data["inventory"])
     elif data["type"] == "Elf":
@@ -30,9 +31,6 @@ def getCharacter(name):
     dataPlayer = db.getCharacter(name)
     return loadCharacter(dataPlayer)
 
-
-#print(type(character))
-#print(character.life)
 
 
 
