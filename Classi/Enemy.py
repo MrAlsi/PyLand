@@ -10,6 +10,14 @@ class Enemy(Entity):
     def __init__(self, lineage, name, level, weapon, life, basic_attack, defence, special_attack, drop):
         super().__init__(lineage, name, level, weapon, life, basic_attack, defence, special_attack)
         self.drop = drop
+        self.vita_iniziale = self.life
+
+    def print_lifepoints(self):
+        """
+        Prints PG life points
+        :return:
+        """
+        print(f"Current life is {self.life}/{self.vita_iniziale}")
 
     # Guardaci in data 19.07
 
@@ -59,7 +67,7 @@ class Enemy(Entity):
                 opponent.print_lifepoints()
 
 
-slime = Enemy("Enemy","Slime", 1, None, 20, 10, 10, None, 5)
+slime = Enemy("Enemy","Slime", 1, None, 20, 10, 10, {"name": " Superslime", "attack": 6}, 5)
 rat = Enemy("Enemy","Rat", 1, "Sharp fangs", 15, 10, 10, {"name": "Poisonous bite", "attack": 6}, 5)
 goblin = Enemy("Enemy","Goblin", 2, "Rusty sword", 25, 15, 15, {"name": "Low blow", "attack": 6}, 10)
 skeleton = Enemy("Enemy","Skeleton", 3, "Broken axe", 35, 20, 20, {"name": "Flying bones", "attack": 6}, 15)

@@ -68,13 +68,13 @@ pg1 = Wizard(lineage="Buoni",
              name="Silente",
              level=0,
              weapon=None,
-             life=200,
+             life=2000,
              basic_attack=10,
              defence=5,
              special_attack=15,
              gender='m',
              exp=0,
-             wallet=20,
+             wallet=2000,
              inventory=[])
 
 pg2 = Wizard(lineage="Buoni",
@@ -98,6 +98,7 @@ pg2 = Wizard(lineage="Buoni",
 
 missions_list = [mission_easy, mission_medium, mission_hard]
 
+
 def main_loop(player):
     print("Welcome to PyLand!")
     while not player.is_defeated():
@@ -116,7 +117,7 @@ def main_loop(player):
             print("1. Fabbro")
             print("2. Locanda")
 
-            location_choice = int(input("Entra il numero della location che vuoi visitare"))
+            location_choice = int(input("Entra il numero della location che vuoi visitare: "))
 
             if location_choice == 1:
                 print(f"Ciao, sono il fabbro e mi chiamo {smith.name}")
@@ -134,16 +135,27 @@ def main_loop(player):
             mission, monster = select_mission(player.level)
             mission.print_description()
             monster.print_info()
-            while not player.is_defeated() and not monster.is_defeated():
-                player.fight(monster)
-                if monster.life > 0:
-                    monster.fight(player)
+
+            # Chiedi di equipaggiare
+            player.ask_to_equip()
+
+            m = monster
+            # Combatti
+            while not player.is_defeated() and not m.is_defeated():
+                print('----------------------')
+                player.fight(m)
+                if m.life > 0:
+                    m.fight(player)
 
             # result = combat(player, monster)
-            if monster.is_defeated():
+            if m.is_defeated():
+                m.life = m.vita_iniziale
                 player.gain_experience(mission.exp_reward)
                 player.wallet += mission.money_reward
-                print(f"You have defeated {monster.name}! You win!")
+                print(f"You have defeated {m.name}! You win!")
+
+                # Disequipaggia l'arma
+                player.disequip_weapon()
             else:
                 print("You have been defeated. Game Over!")
 
@@ -153,6 +165,7 @@ def main_loop(player):
             print("1. Acquista arma")
             print("2. Vendi arma")
             print("3. Upgrade Arma")
+            print("4. Visualizza le armi che hai nell'inventario")
 
             choice_ = int(input("Cosa vuoi fare? "))
 
@@ -168,13 +181,17 @@ def main_loop(player):
                 print("Hai scelto di fare upgrade di un'arma")
                 smith.upgrade_weapon(player)
 
+            elif choice_ == 4:
+                print("Hai scelto di visualizzare le armi che hai nell'inventario")
+                player.print_current_weapons()
+
         elif choice == 5:
             print("Benvenuto Nella Locanda!")
             print("Azioni disponibili: ")
             print("1. Bevi una birra")
             print("2. Affitta una camera")
 
-            choice_ = int(input("Cosa vuoi fare? "))
+            choice_ = int(input("Cosa vuoi fare?: "))
 
             if choice_ == 1:
                 print("Goditi la tua birra fresca!")
