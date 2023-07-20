@@ -44,6 +44,7 @@ class Character(Entity):
                 opponent.print_lifepoints()
             elif dice_result in list(range(18, 21)):
                 print(f"COLPO CRITICO! Parte l'attacco: {self.special_attack['nome'].upper()}")
+                print(self.special_attack)
                 damage = int((self.attack() + self.special_attack['danno'])/opponent.defence * 5)
                 opponent.life -= damage
                 print(f"{opponent.name} ha subito il tuo danno e ha perso {damage} punti vita")

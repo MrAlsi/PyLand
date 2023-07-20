@@ -196,4 +196,4 @@ def main_loop(player):
 
 
 # Esegui il main loop del gioco
-main_loop(pg1)
+#main_loop(pg1)

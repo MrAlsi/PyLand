@@ -24,7 +24,7 @@ collection_name = dbname["Giocatori"]
 
 #collection_name.insert_one(item_3)
 
-def addCharacter(nome, type, obj):
+def addCharacter(type, obj):
   """
    Method for Add new player in DB
   """
@@ -47,8 +47,7 @@ def addCharacter(nome, type, obj):
   }
 
   collection_name.insert_one(character)
-
-
+  
 
 def getCharacter(nome):
    '''
