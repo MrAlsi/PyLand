@@ -3,6 +3,7 @@
 
 from Classi.Entity import Entity
 import random
+import DB.CRUD as db
 
 
 class Character(Entity):
@@ -116,12 +117,19 @@ class Character(Entity):
         else:
             print("Invalid INPUT. Opponent must be class Character")
 
+
     def is_defeated(self):
         """
         Tells if the player is defeated
         :return:
         """
-        return self.life <= 0
+        print(self.life)
+        if self.life > 0:
+            return False
+        else:
+            self.death()
+            
+
 
     def has_enough_room_in_inventory(self):
         """
@@ -185,3 +193,10 @@ class Character(Entity):
         self.exp -= self.experience_to_next_level
         self.experience_to_next_level *= 2
         print(f"Congratulations! {self.name} leveled up to level {self.level}!")
+
+    def death(self):
+        print(f"Sei morto...\n Speriamo vivamente che ti sia piacuta quest'avventura...\n \
+              Abbiamo cancellato i tuoi dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite... \
+                In bocca al lupo per le tue prossime avventure!!")
+        db.delete_character(self)
+

@@ -34,3 +34,12 @@ class Weapon:
         else:
             print("Weapon is already maxed out")
 
+    def to_dict(self):
+        return {
+            "name" : self.name,
+            "damage" : self.damage,
+            "price" : self.price,
+            "level" : self.level,
+            "max_level" : self.max_level
+        }
+

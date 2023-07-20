@@ -4,6 +4,7 @@ from Classi.weapon_objects import weapons_dict
 from Classi.missions_objects import mission_easy, mission_medium, mission_hard
 from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
 import random
+import DB.CRUD as db
 
 
 def select_mission(player_level):
@@ -207,6 +208,7 @@ def main_loop(player):
             player.print_current_exp()
 
         elif choice == 7:
+            db.updateCharacter(player)
             break
 
         input("premi invio per continuare a giocare")
