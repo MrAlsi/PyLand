@@ -19,16 +19,26 @@ class Enemy(Entity):
         """
         print(f"Current life is {self.life}/{self.vita_iniziale}")
 
-    # Guardaci in data 19.07
-
     def attack(self):
+        """
+        Restituisce l'attacco del mostro
+        :return:
+        """
         return self.basic_attack
 
     def print_info(self):
+        """
+        Stampa Nome e Livello del mostro
+        :return:
+        """
         print(f"Name: {self.name}")
         print(f"level: {self.level}")
 
     def is_defeated(self):
+        """
+        Controlla se il mostro è sconfitto
+        :return:
+        """
         return self.life <= 0
 
     # def lose_lifepoints(self, attacker):
