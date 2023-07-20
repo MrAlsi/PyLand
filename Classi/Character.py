@@ -3,7 +3,7 @@
 
 from Classi.Entity import Entity
 import random
-import DB.CRUD as db
+# import DB.CRUD as db
 
 
 class Character(Entity):
@@ -127,7 +127,8 @@ class Character(Entity):
         if self.life > 0:
             return False
         else:
-            self.death()
+            'ciao'
+            # self.death()
             
 
 
@@ -194,9 +195,21 @@ class Character(Entity):
         self.experience_to_next_level *= 2
         print(f"Congratulations! {self.name} leveled up to level {self.level}!")
 
-    def death(self):
-        print(f"Sei morto...\n Speriamo vivamente che ti sia piacuta quest'avventura...\n \
-              Abbiamo cancellato i tuoi dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite... \
-                In bocca al lupo per le tue prossime avventure!!")
-        db.delete_character(self)
+    def has_fishing_pole(self):
+        """
+        Controlliamo se il giocatore ha una canna da pesca per pescare
+        :param character:
+        :return:
+        """
+        character_weapons = self.print_current_weapons()
+        if "fishing_pole" not in character_weapons:
+            return 0
+        else:
+            return 1
+    #
+    # def death(self):
+    #     print(f"Sei morto...\n Speriamo vivamente che ti sia piacuta quest'avventura...\n \
+    #           Abbiamo cancellato i tuoi dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite... \
+    #             In bocca al lupo per le tue prossime avventure!!")
+    #     db.delete_character(self)
 

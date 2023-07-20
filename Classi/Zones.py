@@ -4,12 +4,11 @@ File creato da Federico Piras in data 18.07.2023
 Definizione di una classe zona
 
 """
-import time
 import random
 import sys
-
-import sys
 import time
+from Classi.ASCII_art import notte_stellata
+from Classi.Enemy import PyKing
 
 
 def loading_animation(my_time):
@@ -57,6 +56,7 @@ class Lake(Zone):
         """
         print(f"I pesci che puoi pescare sono: {self.pesci}")
 
+
     def pesca(self, character):
         """
         Permette al giocatore di pescare un pesce dal lago con una probabilità del 10% di successo
@@ -66,22 +66,25 @@ class Lake(Zone):
         """
         continua_pesca = 1
         # Controlliamo se ho una canna da pesca...
+        if character.has_fishing_pole():
 
-        while continua_pesca:
-            # print(f"{character.name} sta pescando...")
-            loading_animation(50)
-            # time.sleep(10)  # Aspetta 10 secondi per simulare il tempo di pesca
+            while continua_pesca:
+                # print(f"{character.name} sta pescando...")
+                loading_animation(50)
+                # time.sleep(10)  # Aspetta 10 secondi per simulare il tempo di pesca
 
-            # Stampa della barretta di progresso
+                # Stampa della barretta di progresso
 
-            if random.random() < 0.25:  # Probabilità del 10% di successo
-                pesce_pescato = self.pesci
-                print(f"\n{character.name} ha pescato un {pesce_pescato}!")
-                character.add_lifepoints(10)  # Aggiunge 10 punti vita al giocatore
-            else:
-                print(f"{character.name}, purtroppo non hai pescato nulla.")
+                if random.random() < 0.25:  # Probabilità del 10% di successo
+                    pesce_pescato = self.pesci
+                    print(f"\n{character.name} ha pescato un {pesce_pescato}!")
+                    character.add_lifepoints(10)  # Aggiunge 10 punti vita al giocatore
+                else:
+                    print(f"\n{character.name}, purtroppo non hai pescato nulla.")
 
-            continua_pesca = int(input("Vuoi continuare a pescare? 1 sì, 0 no"))
+                continua_pesca = int(input("Vuoi continuare a pescare? 1 sì, 0 no"))
+        else:
+            print("Non hai la canna da pesca. Valla a comprare dal Fabbro")
 
 
 class Mountain(Zone):
@@ -92,10 +95,27 @@ class Mountain(Zone):
         self.descrizione = descrizione
         self.tentativi = 3
 
-    def ask_entrance(self):
+    def ask_entrance(self, character):
         if self.tentativi != 0:
             print("Non puoi entrare")
             self.tentativi -= 1
         else:
-            print("Compare PyKing!")
+            print("Compare PyKing! Combatti contro PyKing!")
+            # Combatti
+            while not character.is_defeated() and not PyKing.is_defeated():
+                print('----------------------')
+                character.fight(PyKing)
+                if PyKing.life > 0:
+                    PyKing.fight(character)
+                time.sleep(2)
+
+    def sleep_under_the_stars(self):
+        """
+        Fa una bella dormita sotto le stelle
+        :return:
+        """
+
+        for riga in notte_stellata:
+            print(riga)
+            time.sleep(1.1)
 

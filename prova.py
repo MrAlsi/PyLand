@@ -1,3 +1,5 @@
+import time
+
 from Classi.Wizard import Wizard
 from Classi.shops_objects import smith, tavern
 from Classi.weapon_objects import weapons_dict
@@ -5,7 +7,7 @@ from Classi.zone_objects import lago, montagna
 from Classi.missions_objects import mission_easy, mission_medium, mission_hard
 from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
 import random
-import DB.CRUD as db
+# import DB.CRUD as db
 
 
 def select_mission(player_level):
@@ -171,6 +173,7 @@ def main_loop(player):
                 player.fight(m)
                 if m.life > 0:
                     m.fight(player)
+                time.sleep(2)
 
             # result = combat(player, monster)
             if m.is_defeated():
@@ -275,10 +278,10 @@ def main_loop(player):
 
                 choice_ = int(input("Cosa vuoi fare? "))
                 if choice_ == 1:
-                    pass
+                    montagna.sleep_under_the_stars()
 
                 elif choice_ == 2:
-                    montagna.ask_entrance()
+                    montagna.ask_entrance(player)
 
                 elif choice_ == 3:
                     rimani = False
@@ -287,14 +290,15 @@ def main_loop(player):
             player.print_lifepoints()
             player.print_wallet_balance()
             player.print_current_exp()
+            player.print_current_weapons()
 
         elif choice == 9:
-            db.updateCharacter(player) 
-            break;   
+            # db.updateCharacter(player)
+            break
 
 
         input("premi invio per continuare a giocare")
 
 
 # Esegui il main loop del gioco
-#main_loop(pg1)
+main_loop(pg1)
