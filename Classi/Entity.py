@@ -55,5 +55,9 @@ class Entity:
         """
         return self.basic_attack + self.weapon.damage if self.is_equipped() else self.basic_attack
 
+    def take_damage(self, damage):
+        self.life -= damage
+
+
 
 

@@ -1,8 +1,37 @@
 from Classi.Wizard import Wizard
-from Classi.Shops import Tavern, Smith
+from Classi.shops_objects import smith, tavern
 from Classi.weapon_objects import weapons_dict
+from Classi.missions_objects import mission_easy, mission_medium, mission_hard
+from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
+import random
+
+
+def select_mission(player_level):
+    if player_level < 3:
+        return mission_easy, random.choice(easy_monsters)
+    elif 3 <= player_level < 6:
+        return mission_medium, random.choice(medium_monsters)
+    else:
+        return mission_hard, random.choice(strong_monsters)
 #
+# def combat(player, monster):
+#     while not player.is_defeated() and not monster.is_defeated():
+#         player_damage = player.attack()
+#         monster_damage = monster.attack()
 #
+#         monster.take_damage(player_damage)
+#         player.take_damage(monster_damage)
+#
+#         print(f"{player.name} attacks {monster.name} and deals {player_damage} damage.")
+#         print(f"{monster.name} attacks {player.name} and deals {monster_damage} damage.")
+#
+#     if player.is_defeated():
+#         print("You have been defeated. Game Over!")
+#         return 0  # Il giocatore non guadagna esperienza se viene sconfitto
+#     elif monster.is_defeated():
+#         print(f"You have defeated {monster.name}! You win!")
+#         return 1
+
 # wiz = Wizard(lineage="Buoni",
 #              name="Wiz",
 #              level=0,
@@ -45,7 +74,7 @@ pg1 = Wizard(lineage="Buoni",
              special_attack=15,
              gender='m',
              exp=0,
-             wallet=2000,
+             wallet=20,
              inventory=[])
 
 pg2 = Wizard(lineage="Buoni",
@@ -60,9 +89,111 @@ pg2 = Wizard(lineage="Buoni",
              exp=0,
              wallet=2000,
              inventory=[])
+#
+# while pg1.life > 0 and pg2.life > 0:
+#     print("--------------------------------------")
+#     pg1.fight(pg2)
+#     if pg2.life > 0:
+#         pg2.fight(pg1)
 
-while pg1.life > 0 and pg2.life > 0:
-    print("--------------------------------------")
-    pg1.fight(pg2)
-    if pg2.life > 0:
-        pg2.fight(pg1)
+missions_list = [mission_easy, mission_medium, mission_hard]
+
+def main_loop(player):
+    print("Welcome to PyLand!")
+    while not player.is_defeated():
+        print("1. Esplora Locations")
+        print("2. Esplora missioni")
+        print("3. Fai una missione (combatti con un mostro)")
+        print("4. Vai dal fabbro")
+        print("5. Vai in locanda")
+        print("6. Visualizza stato giocatore")
+        print("7. Esci")
+
+        choice = int(input("Cosa vuoi fare?"))
+
+        if choice == 1:
+            print("Ci sono due luoghi che puoi visitare! Su quale vorresti avere maggiori info?")
+            print("1. Fabbro")
+            print("2. Locanda")
+
+            location_choice = int(input("Entra il numero della location che vuoi visitare"))
+
+            if location_choice == 1:
+                print(f"Ciao, sono il fabbro e mi chiamo {smith.name}")
+                smith.print_description()
+
+            elif location_choice == 2:
+                print(f"Benvenuto da {tavern.name}")
+                tavern.print_description()
+
+        elif choice == 2:
+            for mission in missions_list:
+                mission.print_description()
+
+        elif choice == 3:
+            mission, monster = select_mission(player.level)
+            mission.print_description()
+            monster.print_info()
+            while not player.is_defeated() and not monster.is_defeated():
+                player.fight(monster)
+                if monster.life > 0:
+                    monster.fight(player)
+
+            # result = combat(player, monster)
+            if monster.is_defeated():
+                player.gain_experience(mission.exp_reward)
+                player.wallet += mission.money_reward
+                print(f"You have defeated {monster.name}! You win!")
+            else:
+                print("You have been defeated. Game Over!")
+
+        elif choice == 4:
+            print("Benvenuto dal FABBRO")
+            print("Azioni disponibili: ")
+            print("1. Acquista arma")
+            print("2. Vendi arma")
+            print("3. Upgrade Arma")
+
+            choice_ = int(input("Cosa vuoi fare? "))
+
+            if choice_ == 1:
+                print("Hai scelto di comprare un'arma")
+                smith.buy_new_weapon(player)
+
+            elif choice_ == 2:
+                print("Hai scelto di vendere un'arma")
+                smith.sell_weapon(player)
+
+            elif choice_ == 3:
+                print("Hai scelto di fare upgrade di un'arma")
+                smith.upgrade_weapon(player)
+
+        elif choice == 5:
+            print("Benvenuto Nella Locanda!")
+            print("Azioni disponibili: ")
+            print("1. Bevi una birra")
+            print("2. Affitta una camera")
+
+            choice_ = int(input("Cosa vuoi fare? "))
+
+            if choice_ == 1:
+                print("Goditi la tua birra fresca!")
+                tavern.drink_a_beer(player)
+
+            elif choice_ == 2:
+                print("Ti vedo stanco, buon riposo!")
+                tavern.rent_a_room(player)
+
+        elif choice == 6:
+            player.print_lifepoints()
+            player.print_wallet_balance()
+            player.print_current_exp()
+
+        elif choice == 7:
+            break
+
+        input("premi invio per continuare a giocare")
+
+
+# Esegui il main loop del gioco
+main_loop(pg1)

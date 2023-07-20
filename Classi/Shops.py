@@ -16,7 +16,11 @@ class Shop:
 class Smith(Shop):
 
     def __init__(self, name):
-        self.name = 'Mario'
+        self.name = name
+        self.description = "Benvenuto dal Fabbro! Qui potrai comprare, vendere o migliorare le tue armi"
+
+    def print_description(self):
+        print(self.description)
 
     def show_available_weapons(self, character):
         """
@@ -51,7 +55,7 @@ class Smith(Shop):
             list_of_available_weapons = self.show_available_weapons(character)
 
             # Chiedo l'arma
-            desired_weapon = input("Che arma vuoi? ")
+            desired_weapon = input("Digita il nome dell'arma desiderata: ")
             while desired_weapon not in list_of_available_weapons:
                 desired_weapon = input("Hai inserito un nome arma non valido. Che arma vuoi? ")
 
@@ -202,7 +206,11 @@ class Tavern(Shop):
 
     def __init__(self, name):
         super().__init__(name)
+        self.description = "Benvenuto in Taverna! Qui potrai riposare o bere una birra per recuperare dei punti vita"
         self.__price_per_night = 10
+
+    def print_description(self):
+        print(self.description)
 
     def rent_a_room(self, character):
         """
@@ -214,15 +222,16 @@ class Tavern(Shop):
             n_nights = int(input("How many nights do you want to stay?"))
             price = self.__price_per_night * n_nights
             if character.has_enough_money(price):
-                print("adfkn")
                 n_hours_per_night = 8
                 n_lifepoints_per_hour = 3
                 life_to_add = n_nights * n_hours_per_night * n_lifepoints_per_hour
-                print("QUesto", character.life)
+                print(f"La tua vita precedente: {character.life}")
                 character.add_lifepoints(life_to_add)
-                print("QUestaltro", character.life)
-            else:
-                print("ma che cazz")
+                print(f"La tua vita attuale: {character.life}")
+            # else:
+            #     print("Mi dispiace, non hai abbastanza soldi per dormire. Completa delle missioni per guadagnare soldi")
+            #     character.print_wallet_balance()
+            #     print(f"Il prezzo dell'alloggio è: {price}")
         else:
             print(f"Invalid input class. Character must be class class Character. Your input is of class {type(character)}")
 
