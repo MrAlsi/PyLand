@@ -8,12 +8,23 @@ class Mission:
         self.completed = False
 
     def print_description(self):
+        """
+        Stampa la descrizione della missione
+        :return:
+        """
         print(self.description)
 
     def print_status(self):
+        """
+        Stampa lo stato della missione
+        :return:
+        """
         print(self.completed)
 
     def update_status(self):
-        # Implementa una funzione per fare aggiornare lo status
+        """
+        Aggiorna lo stato della missione
+        :return:
+        """
         self.completed = True
 
