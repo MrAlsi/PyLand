@@ -88,6 +88,7 @@ orc = Enemy("Enemy","Orc", 7, "Big hammer", 50, 25, 25, {"name":  "Smash", "atta
 vampire = Enemy("Enemy","Vampire", 8, "Fangs", 12, 5, 5, {"name": "Blood drain", "attack": 6}, 50)
 dragon = Enemy("Enemy","Dragon", 10, "Claws", 75, 30, 30, {"name": "Fire breath", "attack": 6}, 75)
 hydra = Enemy("Enemy","Hydra", 9, "Claws", 90, 35, 35, {"name": "Acid spit", "attack": 6}, 100)
+PyKing = Enemy("Enemy","PyKing", 11, "Mortal Attack", 500, 50, 50, {"name": "Virus", "attack": 50}, 100)
 
 easy_monsters = [slime, rat, goblin, wolf, vampire]
 medium_monsters = [skeleton, ghost, zombie, orc]
