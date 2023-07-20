@@ -14,7 +14,6 @@ def get_database():
   
 # This is added so that many files can reuse the function get_database()
 if __name__ == "__main__":   
-  
    # Get the database
    dbname = get_database()
 
@@ -27,7 +26,7 @@ collection_name = dbname["Giocatori"]
 
 def addCharacter(nome, type, obj):
   """
-   Method for Add character in DB
+   Method for Add new player in DB
   """
   collection_name = dbname["Giocatori"]
   character = {
@@ -61,6 +60,12 @@ def getCharacter(nome):
 
 def updateCharacter(player):
    pass
+
+
+def delete_character(player):
+   giocatori = dbname["Giocatori"]
+   giocatori.delete_one({"name":player.name})
+   print("Giocatore eliminato")
 
 
 

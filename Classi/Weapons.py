@@ -29,6 +29,7 @@ class Weapon:
         if self.level < self.max_level:
             self.level += 1
             self.damage = int(self.damage * 0.05 + self.damage)
+            print("SWINGOOOO")
         else:
             print("Weapon is already maxed out")
 
