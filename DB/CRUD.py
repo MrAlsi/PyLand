@@ -24,7 +24,7 @@ collection_name = dbname["Giocatori"]
 
 #collection_name.insert_one(item_3)
 
-def addCharacter(nome, type, obj):
+def addCharacter(type, obj):
   """
    Method for Add new player in DB
   """
@@ -43,12 +43,10 @@ def addCharacter(nome, type, obj):
       "exp": obj.exp,
       "wallet": obj.wallet,
       "inventory": obj.inventory
-
   }
 
   collection_name.insert_one(character)
-
-
+  
 
 def getCharacter(nome):
    '''
@@ -67,6 +65,3 @@ def delete_character(player):
    giocatori.delete_one({"name":player.name})
    print("Giocatore eliminato")
 
-
-
-print("WE")

@@ -1,7 +1,7 @@
 
 from Classi.Wizard import Wizard as newWizard
 from Classi.Elf import Elf as newElf
-from Classi.Knight import Knight as newKnigth
+from Classi.Knight import Knight as newKnight
 from Classi.Ninja import Ninja as newNinja
 import DB.CRUD as db
 
@@ -20,7 +20,7 @@ def loadCharacter(data):
         return newNinja(data["lineage"], data["name"], data["level"], data["weapon"], data["life"], data["basic_attack"],
                 data["defence"], data["special_attack"], data["gender"], data["exp"], data["wallet"], data["inventory"])
     else:
-        return newKnigth(data["lineage"], data["name"], data["level"], data["weapon"], data["life"], data["basic_attack"],
+        return newKnight(data["lineage"], data["name"], data["level"], data["weapon"], data["life"], data["basic_attack"],
                 data["defence"], data["special_attack"], data["gender"], data["exp"], data["wallet"], data["inventory"])
 
 def getCharacter(name):
@@ -31,9 +31,17 @@ def getCharacter(name):
     return loadCharacter(dataPlayer)
 
 
-#print(type(character))
-#print(character.life)
+#Function for create the object of character
+def createWizard(name, lineage, gender):
+    return newWizard(lineage, name, 0, None, 200, 10, 5, {'nome': 'Avadakedavra', 'danno': 20}, gender, 0, 50, [])
 
+def createKnight(name, lineage, gender):
+    return newKnight(lineage, name, 0, None, 200, 15, 10, {'nome': 'Charge', 'danno': 10}, gender, 0, 50, [])
 
+def createElf(name, lineage, gender):
+    return newElf(lineage, name, 0, None, 200, 10, 3, {'nome': 'Sharpshooter', 'danno': 25}, gender, 0, 50, [])
+
+def createNinja(name, lineage, gender):
+    return newNinja(lineage, name, 0, None, 200, 15, 15, {'nome': 'Shadow Clone', 'danno': 15}, gender, 0, 50, [])
 
 
