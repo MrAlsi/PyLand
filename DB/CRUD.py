@@ -43,7 +43,6 @@ def addCharacter(type, obj):
       "exp": obj.exp,
       "wallet": obj.wallet,
       "inventory": obj.inventory
-
   }
 
   collection_name.insert_one(character)
@@ -66,6 +65,3 @@ def delete_character(player):
    giocatori.delete_one({"name":player.name})
    print("Giocatore eliminato")
 
-
-
-print("WE")

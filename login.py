@@ -1,9 +1,9 @@
 import time
 import DB.CRUD as db
-import CreatePlayer as cp
 import os
 import prova as game
-import game as gc
+import Character_Loading as cl
+
 
 menu = True
 
@@ -109,7 +109,8 @@ while(menu):
             player = db.getCharacter(name)
             if player != None:
                 print("player",player)
-                game.main_loop(gc.getCharacter(name))
+                game.main_loop(cl
+                .getCharacter(name))
             else:
                 print("Personaggio non trovato")
 
@@ -121,17 +122,18 @@ while(menu):
         tipo = selectCharacter()
         player = ""
         if tipo == "Knight":
-            player = db.addCharacter(tipo, cp.createKnight(name, lineage, gender))
+            player = db.addCharacter(tipo, cl.createKnight(name, lineage, gender))
         elif tipo == "Wizard":
-            player = db.addCharacter(tipo, cp.createWizard(name, lineage, gender))
+            player = db.addCharacter(tipo, cl.createWizard(name, lineage, gender))
         elif tipo == "Elf":
-            player = db.addCharacter(tipo, cp.createElf(name, lineage, gender))
+            player = db.addCharacter(tipo, cl.createElf(name, lineage, gender))
         elif tipo == "Ninja":
-            player = db.addCharacter(tipo, cp.createNinja(name, lineage, gender))
+            player = db.addCharacter(tipo, cl.createNinja(name, lineage, gender))
 
         dialog("Super!! allora iniziamo a giocare")
         os.system('cls')
-        game.main_loop(gc.getCharacter(name))
+        game.main_loop(cl
+        .getCharacter(name))
 
     else: #INVALID INPUT
         dialog("Bro...")
