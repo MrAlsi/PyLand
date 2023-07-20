@@ -14,28 +14,37 @@ class Shop:
 
 
 class Smith(Shop):
+    """
+    Classe fabbro. Dal fabbro potrai comprare delle armi, vendere delle armi o migliorare delle armi.
+    """
 
     def __init__(self, name):
         self.name = name
         self.description = "Benvenuto dal Fabbro! Qui potrai comprare, vendere o migliorare le tue armi"
 
     def print_description(self):
+        """
+        Stampa la descrizione della fabbro
+        :return:
+        """
         print(self.description)
 
     def show_available_weapons(self, character):
         """
-        Function that shows the available weapons for the character playing
-        :param character:
-        :return:
+        Funzione che mostra le armi acquistabili in base al tipo di gioccatore
+        :param character: instance of Character
+        :return: lista con il nome delle armi. Stampa anche arma e prezzo
         """
         character_type = type(character).__name__
 
+        # Prendo nome arma e prezzo delle armi acquistabili da questo tipo di PG
         weapon_names = []
         weapon_prices = []
         for element in weapons_dict[character_type]:
             weapon_names.append(element.name)
             weapon_prices.append(element.price)
 
+        # Print delle armi disponibili
         print("Puoi comprare le seguenti armi:")
         for nome_arma, prezzo_arma in list(zip(weapon_names, weapon_prices)):
             print(f"Nome: {nome_arma}, prezzo: {prezzo_arma}")
@@ -43,23 +52,30 @@ class Smith(Shop):
 
     def buy_new_weapon(self, character):
         """
-        Function that allows to buy the new weapon
-        :param character:
-        :param desired_weapon:
+        Permette a un giocatore in ingresso di comprare le armi da lui acquistabili (esempio, un ninja non può comprare
+        le armi di un cavaliere.
+        Aggiunge l'arma acquistata all'inventario e scala i soldi dal portafoglio del giocatore
+
+        :param character: instance of Character
         :return:
         """
 
+        # Se c'è abbastanza spazio nell'inventario...
         if character.has_enough_room_in_inventory():
 
-            # Facciamo vedere le armi disponibili
+            # Facciamo vedere le armi disponibili e le salviamo anche in una variabile
             list_of_available_weapons = self.show_available_weapons(character)
 
-            # Chiedo l'arma
+            # Ti dico quanti soldi hai...
+            print('====================================')
+            character.print_wallet_balance()
+
+            # Chiedo all'utente che arma vuole comprare
             desired_weapon = input("Digita il nome dell'arma desiderata: ")
+
+            # Se non mi dai un input valido continuo a chiedertelo...
             while desired_weapon not in list_of_available_weapons:
                 desired_weapon = input("Hai inserito un nome arma non valido. Che arma vuoi? ")
-
-            character_type = type(character).__name__
 
             # Controllo per non comprare armi doppie
             weapons_names = []
@@ -72,6 +88,9 @@ class Smith(Shop):
             else:
                 # Mi serve per l'indice
                 weapon_names = []
+                character_type = type(character).__name__
+
+                # Ciclo sulle armi disponibili. Il dizionario lo ho importato
                 for element in weapons_dict[character_type]:
                     weapon_names.append(element.name)
 
@@ -82,7 +101,8 @@ class Smith(Shop):
                 weapon = weapons_dict[character_type][weapon_index]
                 price = weapon.price
 
-                # Se ha abbastanza soldi
+                # Se ha abbastanza soldi... Non c'è bisogna di fare un else perchè se non ci sono abbastanza
+                # soldi la funzione has_enough_money(price) stampa già che non ci sono soldi
                 if character.has_enough_money(price) and character.has_enough_room_in_inventory():
                     character.inventory.append(weapon)
                     print("Acquisto avvenuto con successo")
@@ -91,7 +111,7 @@ class Smith(Shop):
     def sell_weapon(self, character):
         """
         Funzione per vendere un'arma
-        :param character:
+        :param character: instance of Character
         :return:
         """
         # Prendo inventario
@@ -104,9 +124,12 @@ class Smith(Shop):
         else:
 
             # Ciclo sugli elementi dell'inventario e mi salvo i nomi delle armi
-            weapon_names = []
-            for element in inventory:
-                weapon_names.append(element.name)
+            # weapon_names = []
+            # for element in inventory:
+            #     weapon_names.append(element.name)
+
+            # Prendo gli le armi dell'inventario
+            weapon_names = character.print_current_weapons()
 
             # Chiedo all'utente quale arma vuole eliminare
             print("You have the following weapons in your inventory: which one would you like to sell?")
@@ -201,7 +224,6 @@ class Smith(Shop):
             print("Nessun upgrade effettuato")
 
 
-
 class Tavern(Shop):
 
     def __init__(self, name):
@@ -210,11 +232,15 @@ class Tavern(Shop):
         self.__price_per_night = 10
 
     def print_description(self):
+        """
+        Stampa la descrizione della taverna
+        :return:
+        """
         print(self.description)
 
     def rent_a_room(self, character):
         """
-        Allows a character to rent a room to restore some energies
+        Metodo che permette al giocatore di riposarsi per recuperare della vita quando visita la taverna
         :param character: instance of character object
         :return:
         """
@@ -236,6 +262,11 @@ class Tavern(Shop):
             print(f"Invalid input class. Character must be class class Character. Your input is of class {type(character)}")
 
     def drink_a_beer(self, character):
+        """
+        Metodo che permette al giocatore di bere una birra quando visita la taverna
+        :param character:
+        :return:
+        """
         if isinstance(character, Character):
             beer_price = 3
             n_beers = int(input("How many beers do you want to drink?"))
@@ -244,6 +275,7 @@ class Tavern(Shop):
                 n_lifepoints_per_beer = 2
                 life_to_add = n_lifepoints_per_beer * n_beers
                 character.add_lifepoints(life_to_add)
+                character.print_wallet_balance()
         else:
             print(f"Invalid input class. Character must be class class Character. Your input is of class {type(character)}")
 
