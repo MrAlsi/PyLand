@@ -44,9 +44,10 @@ def main_loop(player):
         print("8. Visualizza stato giocatore")
         print("9. Esci\n")
 
-        choice = int(input("Cosa vuoi fare?"))
+        choice = input("Cosa vuoi fare?")
 
-        if choice == 1:
+
+        if choice == '1':
             print("Ci sono quattro luoghi che puoi visitare! Su quale vorresti avere maggiori info?")
             print("1. Fabbro")
             print("2. Locanda")
@@ -82,11 +83,11 @@ def main_loop(player):
                 else:
                     rimani = False
 
-        elif choice == 2:
+        elif choice == '2':
             for mission in missions_list:
                 mission.print_description()
 
-        elif choice == 3:
+        elif choice == '3':
             mission, monster = select_mission(player.level)
             mission.print_description()
             monster.print_info()
@@ -115,7 +116,7 @@ def main_loop(player):
             else:
                 print("You have been defeated. Game Over!")
 
-        elif choice == 4:
+        elif choice == '4':
             print("Benvenuto dal FABBRO")
             print("Azioni disponibili: ")
             print("1. Acquista arma")
@@ -154,7 +155,7 @@ def main_loop(player):
                 elif choice_ == 5:
                     rimani = False
 
-        elif choice == 5:
+        elif choice == '5':
             print("Benvenuto Nella Locanda!")
             print("Azioni disponibili: ")
             print("1. Bevi una birra")
@@ -176,7 +177,7 @@ def main_loop(player):
                 elif choice_ == 3:
                     rimani = False
 
-        elif choice == 6:
+        elif choice == '6':
             rimani = True
             while rimani:
                 print(f"Benvenuto al lago {lago.name.upper()}")
@@ -194,7 +195,7 @@ def main_loop(player):
                 elif choice_ == 3:
                     rimani = False
 
-        elif choice == 7:
+        elif choice == '7':
             print(f"Benvenuto alla montagna {montagna.name.upper()}")
             montagna.print_description()
 
@@ -214,15 +215,18 @@ def main_loop(player):
                 elif choice_ == 3:
                     rimani = False
 
-        elif choice == 8:
+        elif choice == '8':
             player.print_lifepoints()
             player.print_wallet_balance()
             player.print_current_exp()
             player.print_current_weapons()
 
-        elif choice == 9:
+        elif choice == '9':
             db.updateCharacter(player)
             sys.exit()
             break
+
+        else:
+            print('Opzione invalida....')
 
         input("premi invio per continuare a giocare")
