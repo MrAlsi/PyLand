@@ -11,7 +11,7 @@ from Classi.ASCII_art import notte_stellata
 from Classi.Enemy import PyKing
 
 
-def loading_animation(my_time):
+def loading_animation(my_time, name):
     """
     Stampa l'animazione mentre aspetto che pesca
     :param my_time:
@@ -20,7 +20,7 @@ def loading_animation(my_time):
     animation = "|/-\\"
     for i in range(my_time):
         time.sleep(0.2)  # Aggiorna l'animazione ogni 0.1 secondo
-        sys.stdout.write(f"\r Silente sta pescando... {animation[i % len(animation)]} ")
+        sys.stdout.write(f"\r {name} sta pescando... {animation[i % len(animation)]} ")
         sys.stdout.flush()
 
 
@@ -70,7 +70,7 @@ class Lake(Zone):
 
             while continua_pesca:
                 # print(f"{character.name} sta pescando...")
-                loading_animation(50)
+                loading_animation(50, character.name)
                 # time.sleep(10)  # Aspetta 10 secondi per simulare il tempo di pesca
 
                 # Stampa della barretta di progresso
@@ -99,6 +99,7 @@ class Mountain(Zone):
         if self.tentativi != 0:
             print("Non puoi entrare")
             self.tentativi -= 1
+            return True
         else:
             print("Compare PyKing! Combatti contro PyKing!")
             # Combatti
@@ -107,6 +108,11 @@ class Mountain(Zone):
                 character.fight(PyKing)
                 if PyKing.life > 0:
                     PyKing.fight(character)
+                elif PyKing <= 0:
+                    #gestisci vittoria
+                    pass
+                elif character.life <= 0:
+                    return False
                 time.sleep(2)
 
     def sleep_under_the_stars(self):

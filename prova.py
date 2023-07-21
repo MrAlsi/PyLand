@@ -1,5 +1,5 @@
 import time
-
+import os
 from Classi.Wizard import Wizard
 from Classi.shops_objects import smith, tavern
 from Classi.weapon_objects import weapons_dict
@@ -7,7 +7,8 @@ from Classi.zone_objects import lago, montagna
 from Classi.missions_objects import mission_easy, mission_medium, mission_hard
 from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
 import random
-# import DB.CRUD as db
+import DB.CRUD as db
+import sys
 
 
 def select_mission(player_level):
@@ -104,6 +105,7 @@ missions_list = [mission_easy, mission_medium, mission_hard]
 
 
 def main_loop(player):
+    os.system('cls')
     print("Welcome to PyLand!")
     while not player.is_defeated():
         print("1. Esplora Locations")
@@ -281,7 +283,7 @@ def main_loop(player):
                     montagna.sleep_under_the_stars()
 
                 elif choice_ == 2:
-                    montagna.ask_entrance(player)
+                    rimani = montagna.ask_entrance(player)
 
                 elif choice_ == 3:
                     rimani = False
@@ -293,7 +295,8 @@ def main_loop(player):
             player.print_current_weapons()
 
         elif choice == 9:
-            # db.updateCharacter(player)
+            db.updateCharacter(player)
+            sys.exit()
             break
 
 
@@ -301,4 +304,4 @@ def main_loop(player):
 
 
 # Esegui il main loop del gioco
-main_loop(pg1)
+#main_loop(pg1)

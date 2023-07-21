@@ -3,7 +3,8 @@
 
 from Classi.Entity import Entity
 import random
-# import DB.CRUD as db
+import DB.CRUD as db
+import sys
 
 
 class Character(Entity):
@@ -123,12 +124,11 @@ class Character(Entity):
         Tells if the player is defeated
         :return:
         """
-        print(self.life)
         if self.life > 0:
             return False
         else:
-            'ciao'
-            # self.death()
+            self.death()
+            return True
             
 
 
@@ -206,10 +206,13 @@ class Character(Entity):
             return 0
         else:
             return 1
-    #
-    # def death(self):
-    #     print(f"Sei morto...\n Speriamo vivamente che ti sia piacuta quest'avventura...\n \
-    #           Abbiamo cancellato i tuoi dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite... \
-    #             In bocca al lupo per le tue prossime avventure!!")
-    #     db.delete_character(self)
+    
+    def death(self):
+        print(f"Sei morto...\n Speriamo vivamente che ti sia piacuta quest'avventura...\n \
+                Abbiamo cancellato i tuoi dati dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite... \
+                In bocca al lupo per le tue prossime avventure!!")
+        db.delete_character(self)
+        sys.exit()
+
+
 
