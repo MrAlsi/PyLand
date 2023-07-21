@@ -118,14 +118,6 @@ def main_loop(player):
                 print("You have been defeated. Game Over!")
 
         elif choice == '4':
-            print("Benvenuto dal FABBRO")
-            print("Azioni disponibili: ")
-            print("1. Acquista arma")
-            print("2. Vendi arma")
-            print("3. Upgrade Arma")
-            print("4. Visualizza le armi che hai nell'inventario")
-            print("5. Saluta il fabbro")
-
             rimani = True
             while rimani:
                 print("Azioni disponibili: ")
