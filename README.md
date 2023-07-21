@@ -68,6 +68,41 @@ Da definire in corso d’opera
 
 
 
+
+# CODING RULES
+
+  
+**1. Indentazione e formattazione**
+
+Con il tab
+
+  
+
+**2. Nomenclatura**
+
+Variabili con snake_case. Classi con maiuscola. Funzioni o metodi con verbo che descrivono l’azione
+
+  
+
+**3. Commenti**
+
+Funzioni: sopra.
+Codice: Prima dei blocchi
+
+  
+
+**4. Gestione degli errori**
+
+Lettura da console per capire la natura dell’errore.
+
+  
+
+**5. Organizzazione dei files**
+
+Da definire in corso d’opera
+
+
+
 ## Installation requirements
 Abbiamo usato diverse librerie per realizzare questo progetto, quindi prima di utilizzarlo assicurati di averle installate nel tuo ambiente virtuale!
 
@@ -149,11 +184,11 @@ Permette di andare a visitare il fabbro. Ti si aprirà un menù tramite il quale
     4. Visualizza le armi che hai nell'inventario
     5. Saluta il fabbro
 
-* 1. Acquista arma: mostra una lista di armi acquistabili e permette al giocatore di comprarne una, se ha abbastanza soldi nel portafoglio. 
-* 2. Vendi arma. Permette al giocatore di vendere un'arma al fabbro, ovviamente a un prezzo molto ridotto rispetto a quello di acquisto.
-* 3. Upgrade arma: permette al giocatore di migliorare un'oggetto arma che possiede, aumentandone attacco base e livello..
-* 4. Visualizza le armi che hai nell'inventario: permette al giocatore di visualizzare le armi che ha in inventario
-* 5. Sauta il fabbro: permette al giocatore di tornare al menù principale.
+1. Acquista arma: mostra una lista di armi acquistabili e permette al giocatore di comprarne una, se ha abbastanza soldi nel portafoglio. 
+2. Vendi arma. Permette al giocatore di vendere un'arma al fabbro, ovviamente a un prezzo molto ridotto rispetto a quello di acquisto.
+3. Upgrade arma: permette al giocatore di migliorare un'oggetto arma che possiede, aumentandone attacco base e livello..
+4. Visualizza le armi che hai nell'inventario: permette al giocatore di visualizzare le armi che ha in inventario
+5. Sauta il fabbro: permette al giocatore di tornare al menù principale.
 
 **5. Vai in locanda**
 
@@ -163,6 +198,6 @@ Permette di andare a visitare la locanda. Ti si aprirà un menù tramite il qual
     2. Affitta una camera
     3. Esci dalla locanda
 
-* 1. Bevi una birra: chiede al giocatore quante birre vuole bere. Ogni birra ha un prezzo e fa aumentare i punti vita del giocatore
-* 2. Affitta una camera: permette al giocatore di dormire in locanda e recuperare punti vita.
-* 3. Esci dalla locanda: torna al menù principale
+1. Bevi una birra: chiede al giocatore quante birre vuole bere. Ogni birra ha un prezzo e fa aumentare i punti vita del giocatore
+2. Affitta una camera: permette al giocatore di dormire in locanda e recuperare punti vita.
+3. Esci dalla locanda: torna al menù principale
