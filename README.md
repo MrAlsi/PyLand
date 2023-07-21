@@ -147,7 +147,7 @@ Permette di andare a visitare la locanda. Ti si aprirà un menù tramite il qual
 2. Affitta una camera: permette al giocatore di dormire in locanda e recuperare punti vita.
 3. Esci dalla locanda: torna al menù principale
 
-**6.Vai al lago**
+**6. Vai al lago**
 Inserendo il numero "6" in console si accede al meraviglioso mondo del lago, dove attraverso un altro menu a tendina:
 
     1. Pesca
@@ -158,7 +158,7 @@ Nel primo caso ci si può immergere nella magico mondo della pesca, dove se in p
 Nel secondo caso si può fare una veloce sosta per permettere all'utente di recuperare alcuni punti vita, essenziali nei momenti giusti.
 Nel terzo punto, banalmente si torna nel menù principale, per scegliere un'altra opzione.
 
-**7.Vai in montagna**
+**7. Vai in montagna**
 
 Se si seleziona la montagna si incomincia la scalata verso la vetta. Nel menù a scelta si possono selezionare una di queste opzioni:
 
@@ -170,10 +170,10 @@ Se si decide di riposare sotto le stelle, il cielo stellato comparirà in consol
 Attenzione se si decide scalare la montagna, il pericolo è sempre dietro l'angolo...
 Se si è stanchi della faticosa scalata si può sempre decidere di tornare in città e riprovare a scalare
 
-**8.Visualizza stato giocatore**
+**8. Visualizza stato giocatore**
 
 La console stamperà determinate statistiche del giocatore, utili da consultare prima di un combattimento. Tra cui  la vita attuale del giocatore, i soldi in possesso, l'esperienza attuale e gli oggetti presenti nell'inventario
 
-**9.Esci**
+**9. Esci**
 
 Come suggerisce il titolo, se si vuole prendere un pausa dal giocare, o un imprevisto interrompe la meravigliosa esperienza, puoi interrompere quando vuoi la partita senza perdere nessun dato del tuo personaggio. Alla prossima!!
