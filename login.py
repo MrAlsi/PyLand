@@ -3,6 +3,7 @@ import DB.CRUD as db
 import os
 import prova as game
 import Character_Loading as cl
+from Classi.ASCII_art import stats
 
 
 menu = True
@@ -31,7 +32,6 @@ def selectName():
             dialog("Ottimo, nel dubbio anche Porchetta68 era libero")
             return name
         else:
-            print(account)
             dialog(f"Mi dispiace... C'è gia un vecchio {account['type']} che si chiama cosi, riprova")
 
 
@@ -80,6 +80,7 @@ def selectCharacter():
     finish = False
     dialog("Allora, qua puoi essere 4 tipi di personaggio: Cavaliere, Mago, Elfo o Ninja (si puoi essere un ninja)", 2)
     dialog("Queste sono le statistiche base dei tipi dei personaggi",1)
+    print(stats)
     #stampa statistiche
     while(not finish):
         tipo = input("Cosa vuoi essere?\n1) Cavaliere\n2) Mago\n3) Elfo\n4) Ninja\n")
@@ -108,7 +109,6 @@ while(menu):
             #Search in DB
             player = db.getCharacter(name)
             if player != None:
-                print("player",player)
                 game.main_loop(cl.getCharacter(name))
                 menu = False
                 break

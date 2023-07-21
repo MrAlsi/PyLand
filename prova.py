@@ -9,6 +9,7 @@ from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
 import random
 import DB.CRUD as db
 import sys
+from Classi.Zones import win
 
 
 def select_mission(player_level):
@@ -190,14 +191,6 @@ def main_loop(player):
                 print("You have been defeated. Game Over!")
 
         elif choice == 4:
-            print("Benvenuto dal FABBRO")
-            print("Azioni disponibili: ")
-            print("1. Acquista arma")
-            print("2. Vendi arma")
-            print("3. Upgrade Arma")
-            print("4. Visualizza le armi che hai nell'inventario")
-            print("5. Saluta il fabbro")
-
             rimani = True
             while rimani:
                 print("Azioni disponibili: ")
@@ -298,6 +291,10 @@ def main_loop(player):
             db.updateCharacter(player)
             sys.exit()
             break
+
+        elif choice == "hackerMania":
+            win(player.name)
+   
 
 
         input("premi invio per continuare a giocare")

@@ -16,7 +16,7 @@ class Character(Entity):
         self.wallet = wallet
         self.inventory = inventory
         self.max_inventory_len = 3
-        self.experience_to_next_level = 100
+        self.experience_to_next_level = 20
 
     def ask_to_equip(self):
         """
@@ -209,8 +209,8 @@ class Character(Entity):
     
     def death(self):
         print(f"Sei morto...\n Speriamo vivamente che ti sia piacuta quest'avventura...\n \
-                Abbiamo cancellato i tuoi dati dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite... \
-                In bocca al lupo per le tue prossime avventure!!")
+        Abbiamo cancellato i tuoi dati dai nostri DB, potrai creare un nuovo personaggio ma le avventure {self.name} sono finite...\n \
+        In bocca al lupo per le tue prossime avventure!!")
         db.delete_character(self)
         sys.exit()
 

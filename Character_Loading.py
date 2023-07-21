@@ -12,7 +12,6 @@ def get_inventario(diz):
     for weapon in diz:
         weapons.append(newWeapon(weapon["name"], weapon["damage"], weapon["price"], weapon["level"]))
 
-    print(weapons)
     return weapons
 
 def loadCharacter(data):

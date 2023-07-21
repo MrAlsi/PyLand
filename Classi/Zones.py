@@ -6,8 +6,9 @@ Definizione di una classe zona
 """
 import random
 import sys
+import os
 import time
-from Classi.ASCII_art import notte_stellata
+from Classi.ASCII_art import notte_stellata, vittoria
 from Classi.Enemy import PyKing
 
 
@@ -110,7 +111,7 @@ class Mountain(Zone):
                     PyKing.fight(character)
                 elif PyKing <= 0:
                     #gestisci vittoria
-                    pass
+                    win(character.name)
                 elif character.life <= 0:
                     return False
                 time.sleep(2)
@@ -125,3 +126,15 @@ class Mountain(Zone):
             print(riga)
             time.sleep(1.1)
 
+
+def win(name):
+    os.system("cls")
+    time.sleep(1.5)
+    print("** squillo di trombre **")
+    time.sleep(1.5)
+    for line in vittoria:
+        print(line)
+        time.sleep(0.5)
+    time.sleep(1.5)
+    print(f"ORA PYLAND HA FINALMENTE UN NUOVO RE E SEI TU {name}!! CONGRATULAZIONI")
+    sys.exit()
