@@ -165,5 +165,5 @@ def win(name):
         print(line)
         time.sleep(0.5)
     time.sleep(1.5)
-    print(f"ORA PYLAND HA FINALMENTE UN NUOVO RE E SEI TU {name}!! CONGRATULAZIONI")
+    print(f"ORA PYLAND HA FINALMENTE UN NUOVO RE E SEI TU {name.upper()}!! CONGRATULAZIONI")
     sys.exit()

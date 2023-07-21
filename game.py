@@ -7,6 +7,7 @@ from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
 import random
 import DB.CRUD as db
 import sys
+from Classi.Zones import win
 
 
 def clear_console():
@@ -226,6 +227,8 @@ def main_loop(player):
             sys.exit()
             break
 
+        elif choice == "HackerMania":
+            win(player.name)
         else:
             print('Opzione invalida....')
 
