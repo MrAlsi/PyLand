@@ -34,6 +34,19 @@ Lettura da console per capire la natura dell’errore.
 Da definire in corso d’opera
 
 
+# Descrizione del progetto
+
+Una breve introduzione che spiega lo scopo e l'obiettivo del progetto.
+Lo scopo del progetto è quello di permettere all'utente di esplorare e divertirsi nel mondo di **PyLand**, un luogo pieno di sfide che aspettano solo te!!!
+
+Gli obiettivi base del progetto erano quelli di:
+- Creare  un gioco di ruolo multigiocatore online in cui i giocatori possono creare e personalizzare i loro personaggi.
+- Creare un mondo con diverse aree da esplorare e missioni da completare sconfiggendo dei mostri.
+- Gestione dei combattimenti tra personaggio e mostri, attraverso l'uso di oggetti e abilità a secondo della classe scelta all'inizio del gioco.
+
+Oltre ad essi abbiamo reso l'esperienza del giocatore ancora più divertente attraverso frasi uniche e immagini in ASCII indimenticabili
+
+Inoltre abbiamo già creato una base per implementare le armature, indossabili dall'utente e determinanti in battaglia. in futuro ci aspettiamo di implementare **l'Arena** dove gli utenti possono scontrarsi tra di loro 
 
 # Installation requirements
 Abbiamo usato diverse librerie per realizzare questo progetto, quindi prima di utilizzarlo assicurati di averle installate nel tuo ambiente virtuale!
