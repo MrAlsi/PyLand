@@ -110,6 +110,8 @@ while(menu):
             if player != None:
                 print("player",player)
                 game.main_loop(cl.getCharacter(name))
+                menu = False
+                break
             else:
                 print("Personaggio non trovato")
 
@@ -131,8 +133,9 @@ while(menu):
 
         dialog("Super!! allora iniziamo a giocare")
         os.system('cls')
-        game.main_loop(cl
-        .getCharacter(name))
+        game.main_loop(cl.getCharacter(name))
+        menu = False
+        break
 
     else: #INVALID INPUT
         dialog("Bro...")
