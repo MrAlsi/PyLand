@@ -8,7 +8,7 @@ import random
 import sys
 import os
 import time
-from Classi.ASCII_art import notte_stellata, vittoria
+from objects.ASCII_art import notte_stellata, vittoria
 from Classi.Enemy import PyKing
 
 
@@ -16,6 +16,7 @@ def loading_animation(my_time, name):
     """
     Stampa l'animazione mentre aspetto che pesca
     :param my_time:
+    :param name: name of character
     :return:
     """
     animation = "|/-\\"
@@ -42,7 +43,6 @@ class Zone:
         print(self.descrizione)
 
 
-
 class Lake(Zone):
 
     def __init__(self, name, descrizione, pesci):
@@ -56,7 +56,6 @@ class Lake(Zone):
         :return:
         """
         print(f"I pesci che puoi pescare sono: {self.pesci}")
-
 
     def pesca(self, character):
         """
@@ -86,6 +85,36 @@ class Lake(Zone):
                 continua_pesca = int(input("Vuoi continuare a pescare? 1 sì, 0 no"))
         else:
             print("Non hai la canna da pesca. Valla a comprare dal Fabbro")
+
+    def sleep_on_hammock(self, character):
+        """
+        Permette al giocatore di riposarsi affianco al lago, ascoltando il rumore delle rane e rilassandosi.
+        Può anche avere suoni ambientali casuali per rendere l'esperienza più realistica.
+        :param character: Il giocatore che sta riposando
+        :return: None
+        """
+        print(f"{character.name} si rilassa affianco al lago, ascoltando il dolce rumore delle rane...")
+
+        # Genera alcuni suoni ambientali casuali per rendere l'esperienza più realistica
+        sounds = ["Criceto", "Cinguettio degli uccelli", "Frinire delle cicale", "Acqua che scorre"]
+        random_sound = random.choice(sounds)
+        print(f"In sottofondo si sente il suono del {random_sound}.")
+
+        seconds_to_sleep = 5
+        progress_interval = 0.5  # Intervallo di avanzamento (0.5 secondi per semplicità)
+        # progress_width = 50  # Larghezza della barra di avanzamento
+        int(seconds_to_sleep / progress_interval)
+        print("Riposo in corso: ", end="")
+
+        for i in range(int(seconds_to_sleep / progress_interval)):
+            print('zZzZz...', end='', flush=True)
+            time.sleep(progress_interval)
+
+        print("\nRiposo completato!")
+
+        # Ripristina alcuni punti vita del giocatore dopo il riposo
+        print(f"{character.name} si sente meglio e recupera 5 punti vita.")
+        character.add_lifepoints(5)
 
 
 class Mountain(Zone):

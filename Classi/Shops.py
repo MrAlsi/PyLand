@@ -6,7 +6,7 @@ Definizione della classe negozio e dei singoli negozi
 
 """
 from Classi.Character import Character
-from Classi.weapon_objects import weapons_dict
+from objects.weapon_objects import weapons_dict
 
 class Shop:
     def __init__(self, name):

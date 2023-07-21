@@ -1,111 +1,37 @@
 import time
 import os
-from Classi.Wizard import Wizard
-from Classi.shops_objects import smith, tavern
-from Classi.weapon_objects import weapons_dict
-from Classi.zone_objects import lago, montagna
-from Classi.missions_objects import mission_easy, mission_medium, mission_hard
+from objects.shops_objects import smith, tavern
+from objects.zone_objects import lago, montagna
+from objects.missions_objects import mission_easy, mission_medium, mission_hard
 from Classi.Enemy import easy_monsters, medium_monsters, strong_monsters
 import random
 import DB.CRUD as db
 import sys
-from Classi.Zones import win
+
+
+def clear_console():
+    sys.stdout.write("\033[H\033[J")
 
 
 def select_mission(player_level):
+    """
+    Seleziona una missione di livello facile medio o difficile in base al livello del giocatore
+    :param player_level:
+    :return:
+    """
     if player_level < 3:
         return mission_easy, random.choice(easy_monsters)
     elif 3 <= player_level < 6:
         return mission_medium, random.choice(medium_monsters)
     else:
         return mission_hard, random.choice(strong_monsters)
-#
-# def combat(player, monster):
-#     while not player.is_defeated() and not monster.is_defeated():
-#         player_damage = player.attack()
-#         monster_damage = monster.attack()
-#
-#         monster.take_damage(player_damage)
-#         player.take_damage(monster_damage)
-#
-#         print(f"{player.name} attacks {monster.name} and deals {player_damage} damage.")
-#         print(f"{monster.name} attacks {player.name} and deals {monster_damage} damage.")
-#
-#     if player.is_defeated():
-#         print("You have been defeated. Game Over!")
-#         return 0  # Il giocatore non guadagna esperienza se viene sconfitto
-#     elif monster.is_defeated():
-#         print(f"You have defeated {monster.name}! You win!")
-#         return 1
 
-# wiz = Wizard(lineage="Buoni",
-#              name="Wiz",
-#              level=0,
-#              weapon=None,
-#              life=200,
-#              basic_attack=10,
-#              defence=5,
-#              special_attack=15,
-#              gender='m',
-#              exp=0,
-#              wallet=2000,
-#              inventory=[])
-#
-# wiz.print_wallet_balance()
-#
-# tavern = Tavern(name="Taverna da Boe")
-# smith = Smith(name="Mario")
-#
-# # # Compro arma
-# # list_of_available_weapons = smith.show_available_weapons(wiz)
-# #
-# # # Chiedo l'arma
-# # arma_name = input("Che arma vuoi? ")
-# # while arma_name not in list_of_available_weapons:
-# #     arma_name = input("Che arma vuoi? ")
-# #
-# # smith.buy_new_weapon(wiz, arma_name)
-#
-# # Compro arma
-# # smith.buy_new_weapon(wiz)
-
-
-pg1 = Wizard(lineage="Buoni",
-             name="Silente",
-             level=0,
-             weapon=None,
-             life=2000,
-             basic_attack=10,
-             defence=5,
-             special_attack=15,
-             gender='m',
-             exp=0,
-             wallet=2000,
-             inventory=[])
-
-pg2 = Wizard(lineage="Buoni",
-             name="Wizzzzzard",
-             level=0,
-             weapon=None,
-             life=200,
-             basic_attack=10,
-             defence=5,
-             special_attack=15,
-             gender='m',
-             exp=0,
-             wallet=2000,
-             inventory=[])
-#
-# while pg1.life > 0 and pg2.life > 0:
-#     print("--------------------------------------")
-#     pg1.fight(pg2)
-#     if pg2.life > 0:
-#         pg2.fight(pg1)
 
 missions_list = [mission_easy, mission_medium, mission_hard]
 
 
 def main_loop(player):
+    os.system('clear')
     os.system('cls')
     print("Welcome to PyLand!")
     while not player.is_defeated():
@@ -191,6 +117,14 @@ def main_loop(player):
                 print("You have been defeated. Game Over!")
 
         elif choice == 4:
+            print("Benvenuto dal FABBRO")
+            print("Azioni disponibili: ")
+            print("1. Acquista arma")
+            print("2. Vendi arma")
+            print("3. Upgrade Arma")
+            print("4. Visualizza le armi che hai nell'inventario")
+            print("5. Saluta il fabbro")
+
             rimani = True
             while rimani:
                 print("Azioni disponibili: ")
@@ -256,7 +190,7 @@ def main_loop(player):
                     lago.pesca(player)
 
                 elif choice_ == 2:
-                    pass
+                    lago.sleep_on_hammock(player)
 
                 elif choice_ == 3:
                     rimani = False
@@ -292,13 +226,4 @@ def main_loop(player):
             sys.exit()
             break
 
-        elif choice == "hackerMania":
-            win(player.name)
-   
-
-
         input("premi invio per continuare a giocare")
-
-
-# Esegui il main loop del gioco
-#main_loop(pg1)
