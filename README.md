@@ -31,13 +31,44 @@ Lettura da console per capire la natura dell’errore.
 
   
 
+
+
+
+# CODING RULES
+
+  
+**1. Indentazione e formattazione**
+
+Con il tab
+
+  
+
+**2. Nomenclatura**
+
+Variabili con snake_case. Classi con maiuscola. Funzioni o metodi con verbo che descrivono l’azione
+
+  
+
+**3. Commenti**
+
+Funzioni: sopra.
+Codice: Prima dei blocchi
+
+  
+
+**4. Gestione degli errori**
+
+Lettura da console per capire la natura dell’errore.
+
+  
+
 **5. Organizzazione dei files**
 
 Da definire in corso d’opera
 
 
 
-# Installation requirements
+## Installation requirements
 Abbiamo usato diverse librerie per realizzare questo progetto, quindi prima di utilizzarlo assicurati di averle installate nel tuo ambiente virtuale!
 
     import time
@@ -47,7 +78,7 @@ Abbiamo usato diverse librerie per realizzare questo progetto, quindi prima di u
     import sys
     import math
 
-# Struttura dei file
+## Struttura dei file
 
 * **Classi**: Cartella contenente i file .py in cui vengono definite le classi.
 * **objects**: Contiene degli script in cui definiamo degli oggetti, che poi importiamo nello script principale
@@ -57,7 +88,7 @@ Abbiamo usato diverse librerie per realizzare questo progetto, quindi prima di u
 * **main.py** script che permette di lanciare il gioco (implementa le funzionalità dallo script `game.py` e `Character_Loading.py`)
 
 
-# Qualche insight sul mondo virtuale che abbiamo creato
+## Qualche insight sul mondo virtuale che abbiamo creato
 
 Prima di iniziare a giocare, ti verrà chiesto di creare un personaggio o caricarne uno, nel caso avessi già giocato.
 
@@ -109,6 +140,7 @@ Sono possibili due output:
 * Il giocatore viene sconfitto dal mostro, e quindi `GAME OVER`
 
 **4. Vai dal fabbro** 
+
 Permette di andare a visitare il fabbro. Ti si aprirà un menù tramite il quale potrai scegliere che azione compiere:
 
     1. Acquista arma
@@ -124,6 +156,7 @@ Permette di andare a visitare il fabbro. Ti si aprirà un menù tramite il quale
 * 5. Sauta il fabbro: permette al giocatore di tornare al menù principale.
 
 **5. Vai in locanda**
+
 Permette di andare a visitare la locanda. Ti si aprirà un menù tramite il quale potrai scegliere che azione compiere:
 
     1. Bevi una birra
