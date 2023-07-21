@@ -3,6 +3,7 @@ import DB.CRUD as db
 import os
 import game as game
 import Character_Loading as cl
+from objects.ASCII_art import titolo
 
 
 menu = True
@@ -100,7 +101,7 @@ def selectCharacter():
 
 # While for menu
 while menu:
-    print("     ## BENVENUTO IN PYLAND! ## \nIL MONDO ONLINE DI CUI NON AVEVAMO BISOGNO\n")
+    print(titolo, "\nIL MONDO ONLINE DI CUI NON AVEVAMO BISOGNO\n")
     choice = input("Hai già un personaggio? Premi 1 per accedere\nAltrimenti premi 2 per creare un personaggio\n")
     if choice == "1": #LOGIN
         login = True
