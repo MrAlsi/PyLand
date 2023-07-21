@@ -39,7 +39,10 @@ class Character(Entity):
                     weapons_list.append(element.name)
 
                 # Scegli l'arma
-                weapon_name = input("Digita il nome dell'arma che vuoi equipaggiare nel combat")
+                weapon_name = input("Digita il nome dell'arma che vuoi equipaggiare nel combattimento: ")
+                while weapon_name not in weapons_list:
+                    print("Hai sbagliato a digitare...riprova")
+                    weapon_name = input("Digita il nome dell'arma che vuoi equipaggiare nel combattimento: ")
                 idx = weapons_list.index(weapon_name)
                 weapon_to_equip = self.inventory[idx]
 
