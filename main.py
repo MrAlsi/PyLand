@@ -1,7 +1,7 @@
 import time
 import DB.CRUD as db
 import os
-import prova as game
+import game as game
 import Character_Loading as cl
 
 
@@ -23,7 +23,8 @@ def selectName():
     Ask name of character
     '''
     finish = False
-    dialog("Innanzitutto serve un nome, il nome deve essere unico in tutto il mondo quindi è possibile che non sia disponibile il nome che desideri, però possiamo provare\n", 2.5)
+    dialog("Innanzitutto serve un nome, il nome deve essere unico in tutto il mondo quindi è possibile che non sia disponibile"
+           " il nome che desideri, però possiamo provare\n", 2.5)
     while(not finish):
         name = input()
         account = db.getCharacter(name)
@@ -61,7 +62,7 @@ def selectGender():
     '''
     Ask the gender of character, in 2023 is very difficult
     '''
-    while(True):
+    while True:
         dialog("I programmatori vogliono sapere il sesso, non so a cosa serva per questo gioco però devi inserirlo", 2)
         gender = input("Cosa sei?\n1) Maschio\n2) Femmina\n3)Cavallo\n")
         dialog("Ovviamente noi ti crediamo, non è mai successo che in questo tipo di gioco gente menta su queste cose...", 2)
@@ -79,9 +80,9 @@ def selectCharacter():
     '''
     finish = False
     dialog("Allora, qua puoi essere 4 tipi di personaggio: Cavaliere, Mago, Elfo o Ninja (si puoi essere un ninja)", 2)
-    dialog("Queste sono le statistiche base dei tipi dei personaggi",1)
+    dialog("Queste sono le statistiche base dei tipi dei personaggi", 1)
     #stampa statistiche
-    while(not finish):
+    while not finish:
         tipo = input("Cosa vuoi essere?\n1) Cavaliere\n2) Mago\n3) Elfo\n4) Ninja\n")
         if tipo == "1":
             return "Knight"
@@ -97,13 +98,13 @@ def selectCharacter():
             dialog("Sei quello simpatico alle feste te...")
 
 
-#While for menu
-while(menu):
+# While for menu
+while menu:
     print("     ## BENVENUTO IN PYLAND! ## \nIL MONDO ONLINE DI CUI NON AVEVAMO BISOGNO\n")
     choice = input("Hai già un personaggio? Premi 1 per accedere\nAltrimenti premi 2 per creare un personaggio\n")
     if choice == "1": #LOGIN
         login = True
-        while(login):
+        while login:
             name = input("\nCome si chiama il tuo personaggio?  ")
             #Search in DB
             player = db.getCharacter(name)

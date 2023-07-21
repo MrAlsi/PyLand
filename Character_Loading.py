@@ -1,4 +1,3 @@
-
 from Classi.Wizard import Wizard as newWizard
 from Classi.Elf import Elf as newElf
 from Classi.Knight import Knight as newKnight
@@ -16,10 +15,11 @@ def get_inventario(diz):
     return weapons
 
 def loadCharacter(data):
-    '''
+    """
     In base al tipo di personaggio carica un oggetto diverso
-    '''
-
+    :param data:
+    :return:
+    """
 
     if data["type"] == "Wizard":
         return newWizard(data["lineage"], data["name"], data["level"], data["weapon"], data["life"], data["basic_attack"],
