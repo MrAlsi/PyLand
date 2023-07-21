@@ -146,3 +146,34 @@ Permette di andare a visitare la locanda. Ti si aprirà un menù tramite il qual
 1. Bevi una birra: chiede al giocatore quante birre vuole bere. Ogni birra ha un prezzo e fa aumentare i punti vita del giocatore
 2. Affitta una camera: permette al giocatore di dormire in locanda e recuperare punti vita.
 3. Esci dalla locanda: torna al menù principale
+
+**6.Vai al lago**
+Inserendo il numero "6" in console si accede al meraviglioso mondo del lago, dove attraverso un altro menu a tendina:
+
+    1. Pesca
+    2. Riposa su un'amaca
+    3. Torna in città
+
+Nel primo caso ci si può immergere nella magico mondo della pesca, dove se in precedenza si è acquistato dal fabbro l'amo da pesca, si può tentare la fortuna. Nel caso si riesca a pescare una trota allora si recupererà una parte di salute del personaggio.
+Nel secondo caso si può fare una veloce sosta per permettere all'utente di recuperare alcuni punti vita, essenziali nei momenti giusti.
+Nel terzo punto, banalmente si torna nel menù principale, per scegliere un'altra opzione.
+
+**7.Vai in montagna**
+
+Se si seleziona la montagna si incomincia la scalata verso la vetta. Nel menù a scelta si possono selezionare una di queste opzioni:
+
+    1. Riposa sotto le stelle
+    2. Scala la montagna
+    3. Torna in città
+
+Se si decide di riposare sotto le stelle, il cielo stellato comparirà in console per rendere più immersiva l'esperienza.
+Attenzione se si decide scalare la montagna, il pericolo è sempre dietro l'angolo...
+Se si è stanchi della faticosa scalata si può sempre decidere di tornare in città e riprovare a scalare
+
+**8.Visualizza stato giocatore**
+
+La console stamperà determinate statistiche del giocatore, utili da consultare prima di un combattimento. Tra cui  la vita attuale del giocatore, i soldi in possesso, l'esperienza attuale e gli oggetti presenti nell'inventario
+
+**9.Esci**
+
+Come suggerisce il titolo, se si vuole prendere un pausa dal giocare, o un imprevisto interrompe la meravigliosa esperienza, puoi interrompere quando vuoi la partita senza perdere nessun dato del tuo personaggio. Alla prossima!!
