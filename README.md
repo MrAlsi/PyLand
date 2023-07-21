@@ -68,7 +68,7 @@ Abbiamo usato diverse librerie per realizzare questo progetto, quindi prima di u
 * **main.py** script che permette di lanciare il gioco (implementa le funzionalità dallo script `game.py` e `Character_Loading.py`)
 
 
-# Qualche insight sul mondo virtuale che abbiamo creato
+# Esperienza di gioco
 
 Prima di iniziare a giocare, ti verrà chiesto di creare un personaggio o caricarne uno, nel caso avessi già giocato.
 
