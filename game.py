@@ -32,7 +32,6 @@ missions_list = [mission_easy, mission_medium, mission_hard]
 
 def main_loop(player):
     os.system('clear')
-    os.system('cls')
     print("Welcome to PyLand!")
     while not player.is_defeated():
         print("1. Esplora Locations")

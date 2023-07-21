@@ -105,6 +105,7 @@ while menu:
     choice = input("Hai già un personaggio? Premi 1 per accedere\nAltrimenti premi 2 per creare un personaggio\n")
     if choice == "1": #LOGIN
         login = True
+        tentativi = 0
         while login:
             name = input("\nCome si chiama il tuo personaggio?  ")
             #Search in DB
@@ -116,6 +117,10 @@ while menu:
                 break
             else:
                 print("Personaggio non trovato")
+                tentativi+=1
+                if tentativi == 3:
+                    dialog("Forse non hai un account")
+                    login = False
 
 
     elif choice == "2": #CREATION OF CHARACTER
