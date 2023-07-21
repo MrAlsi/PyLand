@@ -93,6 +93,7 @@ Esempio di cosa succede se premiamo `1`:
     Entra il numero della location che vuoi visitare: 
 
 **2. Esplora missioni**
+
 Stampa le missioni disponibili. Esistono tre tipi di missione: facile, media e difficile. Nella missione di livello facile si affronta uno a caso fra vari mostri di livello facile, e così anche per gli altri livelli. Quando un giocatore vuole completare una missione, gliene verrà associata una in base al suo livello. In particolare:
 
 * `livello < 3`: missione facile. Combatti contro un mostro di livello facile;
