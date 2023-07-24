@@ -269,13 +269,26 @@ class Tavern(Shop):
         """
         if isinstance(character, Character):
             beer_price = 3
-            n_beers = int(input("How many beers do you want to drink?"))
-            price = n_beers * beer_price
+
+            while True:
+                # Chiede all'utente il numero di birre che vuole bere
+                n_beers = input("How many beers do you want to drink?")
+
+                # Controllo che il valore digitato dall'utente sia valido, sennò richiedo un input valido
+                if n_beers.isdigit():
+                    n_beers = int(n_beers)
+                    price = n_beers * beer_price
+                    break
+                else:
+                    print(f"Non puoi bere {n_beers} birre.... Entra un numero di birre valido")
+
+            # A questo punto, se il giocatore ha abbastanza soldi beve
             if character.has_enough_money(price):
                 n_lifepoints_per_beer = 2
                 life_to_add = n_lifepoints_per_beer * n_beers
                 character.add_lifepoints(life_to_add)
                 character.print_wallet_balance()
+
         else:
             print(f"Invalid input class. Character must be class class Character. Your input is of class {type(character)}")
 
